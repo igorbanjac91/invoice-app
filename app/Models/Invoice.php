@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
+use Chelout\RelationshipEvents\Concerns\HasBelongsToManyEvents;
 
 class Invoice extends Model
 {
     use HasFactory;
+    use HasBelongsToManyEvents;
 
     // Custom id 
     protected $primaryKey = 'invoice_number';
@@ -38,6 +40,14 @@ class Invoice extends Model
             ];
 
             $invoice->invoice_number = IdGenerator::generate($config);
+        });
+
+        static::belongsToManyAttached(function ($relation, $invoice, $ids, $attributes) {
+            $total = $invoice->total_amount;
+            $item = Item::find($ids[0]);
+            $subTotal = $item->price * $attributes["quantity"];
+            $total += $subTotal;
+            $invoice->update(['total_amount' => $total]);
         });
     }
 

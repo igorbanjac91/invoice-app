@@ -96,12 +96,13 @@ class DatabaseSeeder extends Seeder
             'name' => "Banner Design",
             'price' => 156.00]);
             
+            
         $item_2 = Item::factory()->create([
             'name' => "Email Design",
             'price' => 400.00]);
-
-        $invoice_1->items()->save($item, ['quantity' => 1]);
+            
         $invoice_1->items()->save($item_2, ['quantity' => 2]);
+        $invoice_1->items()->save($item, ['quantity' => 1]);
 
         // Third Invoice 
 

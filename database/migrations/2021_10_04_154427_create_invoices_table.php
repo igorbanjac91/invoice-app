@@ -20,6 +20,7 @@ class CreateInvoicesTable extends Migration
             $table->string('status')->default("draft");
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('customer_id')->nullable();
+            $table->decimal('total_amount', 9, 2)->default(0);
             $table->timestamps();
         });
     }
