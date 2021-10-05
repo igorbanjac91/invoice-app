@@ -10,6 +10,6 @@ class Customer extends Model
     use HasFactory;
 
     public function addresses() {
-        $this->belongsToMany(Address::class);
+        return $this->belongsToMany(Address::class);
     }
 }

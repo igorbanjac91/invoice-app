@@ -13,8 +13,10 @@ class CreatesInvoiceItemPivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('invoice_items', function (Blueprint $table) {
+        Schema::create('invoice_item', function (Blueprint $table) {
             $table->id();
+            $table->integer('item_id');
+            $table->string('invoice_invoice_number');
             $table->integer('quantity');
             $table->timestamps();
         });
