@@ -13,6 +13,13 @@ class Invoice extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
+    protected $fillable = [
+        'invoice_number', 
+        'payment_term',
+        'description', 
+        'status'
+    ];
+
 
     public function user() {
         return $this->belongsTo(User::class);
