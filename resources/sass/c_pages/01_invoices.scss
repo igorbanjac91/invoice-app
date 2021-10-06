@@ -119,6 +119,13 @@
   }
 }
 
+
+/*
+-------------------------------------------
+                DARK MODE
+-------------------------------------------
+*/
+
 .dark {
 
   .invoices-page {
@@ -128,7 +135,6 @@
     &__header {
   
       div:first-child {
-        margin-right: 18px;
   
         h2 {
           color: #fff
@@ -162,29 +168,8 @@
       &__customer {
         color: $text-bright-gray;
       }
-      
-      [class*="invoice-list-item--status"] {
-        box-sizing: border-box;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 104px;
-        padding: 13px;
-        @include body-1;
-        font-weight: 700;
-        text-transform: capitalize;
-        border-radius: 8px;
-  
-        .dot {
-          width: 8px;
-          height: 8px;
-          margin-right: 8px;
-          border-radius: 100%;
-        }
-      }
   
       &--status-paid {
-        color: $dark-green;
         background-color: $light-gray-dark-mode;
   
         .dot {
@@ -193,7 +178,6 @@
       }
       
       &--status-pending {
-        color: $dark-orange;
         background-color: $light-orange-dark-mode;
   
         .dot {
