@@ -4,9 +4,13 @@
 
   &__left {
     flex: 0 1 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     height: 100%;
 
     .logo-container {
+      position: relative;
       width: 72px;
       height: 100%;
       background-color: $purple; 
@@ -18,11 +22,22 @@
         height: 50%;
       }
       
-      div:last-child {
+      div:nth-child(2) {
         background-color: $purple-light;
         border-top-left-radius: 20px;
         border-bottom-right-radius: 20px;
       }
+    }
+
+    .logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .sun, .moon {
+      margin-right: 24px;
     }
   }
 
