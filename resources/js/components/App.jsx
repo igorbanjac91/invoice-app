@@ -11,17 +11,19 @@ import InvoicePage from './InvoicePage';
 
 function App() {
 	return (
-		<Router>
-			<Header />
-			<Switch>
-					<Route exact path="/">
-							<Invoices />
-					</Route>
-					<Route exact path="/invoices/:id">
-							<InvoicePage />
-					</Route>
-			</Switch>
-		</Router>
+		<div className="container">
+			<Router>
+				<Header />
+				<Switch>
+						<Route exact path="/">
+								<Invoices />
+						</Route>
+						<Route exact path="/invoices/:id">
+								<InvoicePage />
+						</Route>
+				</Switch>
+			</Router>
+		</div>
 	);
 }
 

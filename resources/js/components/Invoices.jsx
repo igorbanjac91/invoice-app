@@ -23,7 +23,7 @@ const Invoices = function() {
 
 
   return (
-    <div>
+    <div className="main-content">
       <InvoicesHeader />
       <InvoicesList />
     </div>
