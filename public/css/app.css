@@ -124,7 +124,10 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.main-header__left .sun, .main-header__left .moon {
+.main-header__left .btn-mode {
+  background-color: transparent;
+  border: none;
+  padding: 0;
   margin-right: 24px;
 }
 .main-header__right .user-image-container {
@@ -299,4 +302,77 @@ body {
 }
 .invoices-page .invoice-list-item--status-draft .dot {
   background-color: #373b53;
+}
+
+.dark .invoices-page {
+  background-color: #141624;
+}
+.dark .invoices-page__header div:first-child {
+  margin-right: 18px;
+}
+.dark .invoices-page__header div:first-child h2 {
+  color: #fff;
+}
+.dark .invoices-page__header div:first-child span {
+  color: #e0e4fa;
+}
+.dark .invoices-page__header h3 {
+  color: #fff;
+}
+.dark .invoices-page .invoice-list-item {
+  background-color: #1e2139;
+}
+.dark .invoices-page .invoice-list-item__id {
+  color: #fff;
+}
+.dark .invoices-page .invoice-list-item__date {
+  color: #e0e4fa;
+}
+.dark .invoices-page .invoice-list-item__total {
+  color: #fff;
+}
+.dark .invoices-page .invoice-list-item__customer {
+  color: #e0e4fa;
+}
+.dark .invoices-page .invoice-list-item [class*=invoice-list-item--status] {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 104px;
+  padding: 13px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  font-weight: 700;
+  text-transform: capitalize;
+  border-radius: 8px;
+}
+.dark .invoices-page .invoice-list-item [class*=invoice-list-item--status] .dot {
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 100%;
+}
+.dark .invoices-page .invoice-list-item--status-paid {
+  color: #33d7a0;
+  background-color: #282b43;
+}
+.dark .invoices-page .invoice-list-item--status-paid .dot {
+  background-color: #33d7a0;
+}
+.dark .invoices-page .invoice-list-item--status-pending {
+  color: #ff9100;
+  background-color: #2a2735;
+}
+.dark .invoices-page .invoice-list-item--status-pending .dot {
+  background-color: #ff9100;
+}
+.dark .invoices-page .invoice-list-item--status-draft {
+  color: #e0e4fa;
+  background-color: #282b43;
+}
+.dark .invoices-page .invoice-list-item--status-draft .dot {
+  background-color: #e0e4fa;
 }

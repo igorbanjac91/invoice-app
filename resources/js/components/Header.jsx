@@ -1,7 +1,21 @@
-import React from "react";
-import { IconMoon, Logo } from "./Icons";
+import React, { useState } from "react";
+import { IconMoon, IconSun, Logo } from "./Icons";
 
 const Header = function() {
+
+  const [ mode, setMode ] = useState("light");
+
+  function toggleMode() {
+    let body = document.querySelector("body");
+    if (mode === "light") {
+      setMode("dark");
+      body.classList.add("dark");
+    } else {
+      setMode("light");
+      body.classList.remove("dark");
+    }
+  }
+
   return (
     <header className="main-header">
       <div className="main-header__left">
@@ -10,7 +24,15 @@ const Header = function() {
           <div></div>
           <Logo />
         </div>
-        < IconMoon />
+        <button className="btn-mode"
+                onClick={toggleMode}
+        >
+        { mode === "light"
+          ? <IconMoon />
+          : <IconSun />
+        }
+          
+        </button>
       </div>
       <div className="main-header__right">
         <div className="user-image-container">

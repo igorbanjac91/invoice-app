@@ -27,21 +27,12 @@
     }
   }
 
-  &__list {
-    
-  }
-
   .invoice-list-item {
     display: flex;
     justify-content: space-between;
     padding: 24px;
     margin-bottom: 16px;
     background-color: #fff;
-
-
-    div:first-child {
-
-    }
 
     > div:last-child {
       display: flex;
@@ -123,6 +114,100 @@
 
       .dot {
         background-color: $dark-gray;
+      }
+    }
+  }
+}
+
+.dark {
+
+  .invoices-page {
+    
+    background-color: $bg-dark;
+  
+    &__header {
+  
+      div:first-child {
+        margin-right: 18px;
+  
+        h2 {
+          color: #fff
+        }
+
+        span {
+          color: $text-bright-gray;
+        }
+      }
+
+      h3 {
+        color: #fff;
+      }
+    }
+  
+    .invoice-list-item {
+      background-color: $el-bg-dark;
+  
+      &__id {
+        color: #fff;
+      }
+      
+      &__date {
+        color: $text-bright-gray;
+      }
+      
+      &__total {
+        color: #fff;
+      }
+      
+      &__customer {
+        color: $text-bright-gray;
+      }
+      
+      [class*="invoice-list-item--status"] {
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 104px;
+        padding: 13px;
+        @include body-1;
+        font-weight: 700;
+        text-transform: capitalize;
+        border-radius: 8px;
+  
+        .dot {
+          width: 8px;
+          height: 8px;
+          margin-right: 8px;
+          border-radius: 100%;
+        }
+      }
+  
+      &--status-paid {
+        color: $dark-green;
+        background-color: $light-gray-dark-mode;
+  
+        .dot {
+          background-color: $dark-green;
+        }
+      }
+      
+      &--status-pending {
+        color: $dark-orange;
+        background-color: $light-orange-dark-mode;
+  
+        .dot {
+          background-color: $dark-orange;
+        }
+      }
+  
+      &--status-draft {
+        color: $text-bright-gray;
+        background-color: $light-gray-dark-mode;
+  
+        .dot {
+          background-color: $text-bright-gray;
+        }
       }
     }
   }
