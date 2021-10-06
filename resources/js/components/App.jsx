@@ -5,12 +5,14 @@ import {
   Switch, 
 	Route 
 } from "react-router-dom";
+import Header from './Header';
 import Invoices from './Invoices';
 import InvoicePage from './InvoicePage';
 
 function App() {
 	return (
 		<Router>
+			<Header />
 			<Switch>
 					<Route exact path="/">
 							<Invoices />

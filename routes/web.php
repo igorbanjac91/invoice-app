@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/{path?}', 'app');
+Route::view('/{path?}', 'app')
+    ->where('path', '.*');
 
 Auth::routes();
 
