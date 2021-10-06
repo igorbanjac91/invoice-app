@@ -1,19 +1,13 @@
-// Body
-$body-bg: #f8fafc;
 
-// Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
+/*------------- COLORS --------------*/
 
-// Colors
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66d9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
+$purple: hsl(252, 94%, 67%);
+$purple-hover: hsl(252, 100%, 73%);
+
+$background-dark: hsl(233, 30%, 11%);
+$input-black: hsl(233, 31%, 17%);
+
+$red: hsl(0, 80%, 63%);
+$red-hover: hsl(0, 100%, 80%);
+
+$font-dark: hsl(228, 29%, 7%);
