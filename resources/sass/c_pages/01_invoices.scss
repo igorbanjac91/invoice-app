@@ -1,0 +1,129 @@
+.invoices-page {
+  padding: 32px 24px;
+  background-color: $bg-light;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+
+    div:first-child {
+      margin-right: 18px;
+
+      h2 {
+        @include heading-2;
+      }
+
+      span {
+        @include body-1;
+        color: $text-gray;
+      }
+    }
+
+    div:last-child {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__list {
+    
+  }
+
+  .invoice-list-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px;
+    margin-bottom: 16px;
+    background-color: #fff;
+
+
+    div:first-child {
+
+    }
+
+    > div:last-child {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: right;
+    }
+
+    &__id {
+      display: inline-block;
+      margin-bottom: 24px;
+      @include heading-4;
+
+      span {
+        color: $details-gray-blue;
+      }
+    }
+    
+    &__date {
+      display: block;
+      margin-bottom: 10px;
+      @include body-1;
+      color: $text-gray;
+      white-space: nowrap;
+    }
+    
+    &__total {
+      @include heading-3;
+    }
+    
+    &__customer {
+      display: block;
+      margin-bottom: 24px;
+      @include body-1;
+      color: $text-gray;
+    }
+    
+    [class*="invoice-list-item--status"] {
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 104px;
+      padding: 13px;
+      @include body-1;
+      font-weight: 700;
+      text-transform: capitalize;
+      border-radius: 8px;
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        margin-right: 8px;
+        border-radius: 100%;
+      }
+    }
+
+    &--status-paid {
+      color: $dark-green;
+      background-color: $light-green;
+
+      .dot {
+        background-color: $dark-green;
+      }
+    }
+    
+    &--status-pending {
+      color: $dark-orange;
+      background-color: $light-orange;
+
+      .dot {
+        background-color: $dark-orange;
+      }
+    }
+
+    &--status-draft {
+      color: $dark-gray;
+      background-color: $light-gray;
+
+      .dot {
+        background-color: $dark-gray;
+      }
+    }
+  }
+}

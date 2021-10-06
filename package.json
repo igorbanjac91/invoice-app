@@ -12,6 +12,8 @@
     "devDependencies": {
         "@babel/preset-react": "^7.13.13",
         "axios": "^0.21",
+        "browser-sync": "^2.27.5",
+        "browser-sync-webpack-plugin": "^2.3.0",
         "jquery": "^3.6",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",

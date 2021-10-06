@@ -15,7 +15,7 @@ class InvoicesController extends Controller
     public function index()
     {
         // return Invoice::all();
-        return Invoice::with('items')->get();
+        return Invoice::with('items', 'customer')->get();
     }
 
     /**
