@@ -195,6 +195,16 @@ body {
   border-radius: 100%;
 }
 
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  height: 100px;
+  background-color: #e0e4fb;
+}
+
 .invoices-page {
   background-color: #f9f9fb;
 }
@@ -330,6 +340,9 @@ body {
 }
 .invoices-page .invoice-list-item--status-draft .dot {
   background-color: #373b53;
+}
+.invoices-page .invoice-list-item:last-child {
+  margin-bottom: 0;
 }
 
 /*
