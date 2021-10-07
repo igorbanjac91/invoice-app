@@ -2168,14 +2168,14 @@ var Header = function Header() {
       setMode = _useState2[1];
 
   function toggleMode() {
-    var body = document.querySelector("body");
+    var container = document.querySelector(".container");
 
     if (mode === "light") {
       setMode("dark");
-      body.classList.add("dark");
+      container.classList.add("dark");
     } else {
       setMode("light");
-      body.classList.remove("dark");
+      container.classList.remove("dark");
     }
   }
 

@@ -26,6 +26,11 @@
     }
   }
 
+  &__list {
+    max-height: calc(100vh - 250px);
+    overflow-y: scroll;
+  }
+
   .invoice-list-item {
     box-sizing: border-box;
     display: flex;
@@ -138,10 +143,11 @@
 */
 
 .dark {
-
+  background-color: $bg-dark;
+  
   .invoices-page {
-    
     background-color: $bg-dark;
+    
   
     &__header {
   

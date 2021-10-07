@@ -6,13 +6,13 @@ const Header = function() {
   const [ mode, setMode ] = useState("light");
 
   function toggleMode() {
-    let body = document.querySelector("body");
+    let container = document.querySelector(".container");
     if (mode === "light") {
       setMode("dark");
-      body.classList.add("dark");
+      container.classList.add("dark");
     } else {
       setMode("light");
-      body.classList.remove("dark");
+      container.classList.remove("dark");
     }
   }
 

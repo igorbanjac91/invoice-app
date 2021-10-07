@@ -3,11 +3,45 @@
 
 /*
 -------------------------------------------
+              LAYOUT
+-------------------------------------------
+*/
+
+.container {
+  grid-template-rows: 80px 1fr;
+}
+
+/*
+-------------------------------------------
+                  HEADER
+-------------------------------------------
+*/
+
+.main-header {
+
+  &__left {
+
+    .logo-container {
+      width: 80px;
+    }
+  }
+
+  &__right {
+    
+    .user-image-container {
+      padding: 24px 24px;
+    }
+  }
+}
+
+/*
+-------------------------------------------
               INVOICES PAGE
 -------------------------------------------
 */
 
   .invoices-page {
+    min-width: 630px;
   
     &__header {
       margin-bottom: 56px;
@@ -22,6 +56,9 @@
       }
     }
   
+
+
+
     .invoice-list-item {
       
       > div {

@@ -1,0 +1,125 @@
+@media only screen and (min-width: 960px) {
+
+/*
+-------------------------------------------
+              LAYOUT
+-------------------------------------------
+*/
+
+.container {
+  display: grid; 
+  grid-template-columns: 80px 1fr;
+  grid-template-rows: 1fr;
+  height: 100%;
+}
+
+.main-header {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  height: 100vh;
+}
+
+.main-content {
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+  padding-top: 72px;
+  margin: 0 auto;
+  margin-left: 7%;
+}
+
+
+/*
+-------------------------------------------
+              HEADER
+-------------------------------------------
+*/
+
+.main-header {
+  flex-direction: column;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+
+
+  &__left {
+    flex-direction: column;
+
+    .logo-container {
+      height: 80px;
+    }
+
+    .btn-mode {
+      margin-right: 0;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__right {
+    
+    .user-image-container {
+      border-left: none;
+      border-top: 1px solid hsl(231, 20%, 36%);
+    }
+  }
+}
+
+/*
+-------------------------------------------
+              INVOICES PAGE
+-------------------------------------------
+*/
+
+  .invoices-page {
+    box-sizing: content-box;
+    min-width: 730px;
+    
+    &__header {
+      margin-bottom: 56px;
+
+      div:first-child {
+        margin-right: 40px;
+
+        h2 {
+          @include heading-1;
+          margin-bottom: 8px;
+        }
+      }
+    }
+
+
+    .invoice-list-item {
+      
+      > div {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      &__id {
+        flex: 0 1 auto;
+        order: 1;
+      }
+      
+      &__date {
+        order: 2;
+        margin: 0;
+        margin-left: 6%;
+      }
+      
+      &__total {
+        order: 4;
+        margin-left: auto;
+      }
+      
+      &__customer {
+        order: 3;
+        margin: 0;
+        margin-left: 7%;
+      }
+      
+      [class*="invoice-list-item--status"] {
+        flex: 0 1 auto;
+        order: 5;
+        margin-left: 6%;
+      }
+    }
+  } 
+}
