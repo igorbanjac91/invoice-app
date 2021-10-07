@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState }  from "react";
 import { IconArrowDown, IconPlus } from "./Icons";
+import useWindowSize from "./utils";
 
 const Invoices = function() {
 
@@ -36,19 +37,28 @@ const InvoicesHeader = function() {
     <div className="invoices-page__header">
       <div>
          <h2>Invoices</h2>
-         <span>7 invoices</span>
+         {useWindowSize().width > 768
+         ? <span>There are 7 total invoices</span>
+         : <span>7 invoices</span>
+         }
       </div>
       <div>
         <div>
           <button className="filter-btn">
-            <h3>Filter</h3>
+            {useWindowSize().width > 768
+            ? <h3>Filter by status</h3>
+            : <h3>Filter</h3>
+            }
             <IconArrowDown />
           </button>
         </div>
         <div>
           <button className="new-invoice-btn">
             <IconPlus />
-            <span>New</span>
+            {useWindowSize().width > 768 
+            ? <span>New Invoice</span>
+            : <span>New</span>
+            }
           </button>
         </div>
       </div>
@@ -88,12 +98,8 @@ const InvoicesListItem = function(props) {
     <li className="invoice-list-item">
       <div>
         <h4 className="invoice-list-item__id" ><span>#</span>{invoice.invoice_number}</h4>
-        <div>
-          <time className="invoice-list-item__date">Due {formattedDate}</time>
-          <strong className="invoice-list-item__total" >£ {invoice.total_amount}</strong>
-        </div>
-      </div>
-      <div>
+        <time className="invoice-list-item__date">Due {formattedDate}</time>
+        <strong className="invoice-list-item__total" >£ {invoice.total_amount}</strong>
         <span className="invoice-list-item__customer">{customer.name}</span>
         <div className={`invoice-list-item--status-${invoice.status}`}>
           <div className="dot"></div>

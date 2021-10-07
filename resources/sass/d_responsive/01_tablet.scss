@@ -1,0 +1,61 @@
+
+@media only screen and (min-width: 768px) {
+
+/*
+-------------------------------------------
+              INVOICES PAGE
+-------------------------------------------
+*/
+
+  .invoices-page {
+  
+    &__header {
+      margin-bottom: 56px;
+  
+      div:first-child {
+        margin-right: 40px;
+
+        h2 {
+          @include heading-1;
+          margin-bottom: 8px;
+        }
+      }
+    }
+  
+    .invoice-list-item {
+      
+      > div {
+        flex-direction: row;
+        align-items: center;
+      }
+  
+      &__id {
+        flex: 0 1 auto;
+        order: 1;
+      }
+      
+      &__date {
+        order: 2;
+        margin: 0;
+        margin-left: 6%;
+      }
+      
+      &__total {
+        order: 4;
+        margin-left: auto;
+      }
+      
+      &__customer {
+        order: 3;
+        margin: 0;
+        margin-left: 7%;
+      }
+      
+      [class*="invoice-list-item--status"] {
+        flex: 0 1 auto;
+        order: 5;
+        margin-left: 6%;
+      }
+    }
+  }  
+}

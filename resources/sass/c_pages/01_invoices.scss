@@ -1,5 +1,4 @@
 .invoices-page {
-  padding: 32px 24px;
   background-color: $bg-light;
 
   &__header {
@@ -28,23 +27,29 @@
   }
 
   .invoice-list-item {
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
+    max-height: 134px;
     padding: 24px;
     margin-bottom: 16px;
     background-color: #fff;
-
-    > div:last-child {
+    border-radius: 8px;
+    box-shadow: 0 10px 10px -10px $blue-shadow;
+    
+    > div {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 100%;
       text-align: right;
     }
 
     &__id {
+      flex: 1 1 auto;
       display: inline-block;
-      margin-bottom: 24px;
       @include heading-4;
+      text-align: left;
 
       span {
         color: $details-gray-blue;
@@ -52,18 +57,22 @@
     }
     
     &__date {
+      align-content: flex-end;
       display: block;
       margin-bottom: 10px;
       @include body-1;
       color: $text-gray;
+      text-align: left;
       white-space: nowrap;
     }
     
     &__total {
       @include heading-3;
+      text-align: left;
     }
     
     &__customer {
+      width: auto;
       display: block;
       margin-bottom: 24px;
       @include body-1;
@@ -71,6 +80,8 @@
     }
     
     [class*="invoice-list-item--status"] {
+      flex: 1 1 auto;
+      align-self: flex-end;
       box-sizing: border-box;
       display: flex;
       align-items: center;

@@ -75,9 +75,14 @@ body {
   height: 100%;
 }
 
+#root {
+  height: 100%;
+}
+
 .container {
   display: grid;
   grid-template-rows: 72px 1fr;
+  height: 100%;
 }
 
 .main-header {
@@ -88,6 +93,7 @@ body {
 .main-content {
   grid-row: 2/3;
   grid-column: 1/2;
+  padding: 7.3% 6.5%;
 }
 
 .main-header {
@@ -183,7 +189,6 @@ body {
 }
 
 .invoices-page {
-  padding: 32px 24px;
   background-color: #f9f9fb;
 }
 .invoices-page__header {
@@ -213,30 +218,37 @@ body {
   align-items: center;
 }
 .invoices-page .invoice-list-item {
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
+  max-height: 134px;
   padding: 24px;
   margin-bottom: 16px;
   background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 10px 10px -10px rgba(71, 84, 158, 0.104);
 }
-.invoices-page .invoice-list-item > div:last-child {
+.invoices-page .invoice-list-item > div {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
   text-align: right;
 }
 .invoices-page .invoice-list-item__id {
+  flex: 1 1 auto;
   display: inline-block;
-  margin-bottom: 24px;
   font-size: 12px;
   font-weight: 700;
   line-height: 15px;
   letter-spacing: -0.25px;
+  text-align: left;
 }
 .invoices-page .invoice-list-item__id span {
   color: #7e88c4;
 }
 .invoices-page .invoice-list-item__date {
+  align-content: flex-end;
   display: block;
   margin-bottom: 10px;
   font-size: 12px;
@@ -244,6 +256,7 @@ body {
   line-height: 15px;
   letter-spacing: -0.25px;
   color: #888eaf;
+  text-align: left;
   white-space: nowrap;
 }
 .invoices-page .invoice-list-item__total {
@@ -251,8 +264,10 @@ body {
   font-weight: 700;
   line-height: 24px;
   letter-spacing: -0.8px;
+  text-align: left;
 }
 .invoices-page .invoice-list-item__customer {
+  width: auto;
   display: block;
   margin-bottom: 24px;
   font-size: 12px;
@@ -262,6 +277,8 @@ body {
   color: #888eaf;
 }
 .invoices-page .invoice-list-item [class*=invoice-list-item--status] {
+  flex: 1 1 auto;
+  align-self: flex-end;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -354,4 +371,52 @@ body {
 }
 .dark .invoices-page .invoice-list-item--status-draft .dot {
   background-color: #e0e4fa;
+}
+
+@media only screen and (min-width: 768px) {
+  /*
+  -------------------------------------------
+                INVOICES PAGE
+  -------------------------------------------
+  */
+  .invoices-page__header {
+    margin-bottom: 56px;
+  }
+  .invoices-page__header div:first-child {
+    margin-right: 40px;
+  }
+  .invoices-page__header div:first-child h2 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+  .invoices-page .invoice-list-item > div {
+    flex-direction: row;
+    align-items: center;
+  }
+  .invoices-page .invoice-list-item__id {
+    flex: 0 1 auto;
+    order: 1;
+  }
+  .invoices-page .invoice-list-item__date {
+    order: 2;
+    margin: 0;
+    margin-left: 6%;
+  }
+  .invoices-page .invoice-list-item__total {
+    order: 4;
+    margin-left: auto;
+  }
+  .invoices-page .invoice-list-item__customer {
+    order: 3;
+    margin: 0;
+    margin-left: 7%;
+  }
+  .invoices-page .invoice-list-item [class*=invoice-list-item--status] {
+    flex: 0 1 auto;
+    order: 5;
+    margin-left: 6%;
+  }
 }
