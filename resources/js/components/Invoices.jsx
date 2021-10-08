@@ -22,10 +22,9 @@ const Invoices = function() {
   function fetchInvoices() {
     axios
       .get("/api/invoices")
-      .then( resposne => {
-        console.log(resposne.data);
-        setInvoices(resposne.data);
-        setFilteredInvoices(resposne.data);
+      .then( response => {
+        setInvoices(response.data);
+        setFilteredInvoices(response.data);
       })
       .catch(e => {
         console.log("errors");
@@ -73,27 +72,80 @@ const Invoices = function() {
       <InvoicesHeader checkStatus={checkStatus} 
                       draftChecked={draftChecked} 
                       pendingChecked={pendingChecked}
-                      paidChecked={paidChecked} />
+                      paidChecked={paidChecked}
+                      invoices={filterdInvoices}
+                      totalInvoices={invoices.length} />
       <InvoicesList invoices={filterdInvoices} />
     </div>
   )
 }
 
+
 const InvoicesHeader = function(props) {
 
-  const [ toggleFilter, setToggleFilter ] = useState(false) 
+  const [ toggleFilter, setToggleFilter ] = useState(false);
+  const [ message, setMessage ] = useState("");
 
   function toggleFilterBox() {
     setToggleFilter(!toggleFilter);
   }
 
+  useEffect(() => {
+    setMessages(props.invoices);
+  }, [props.invoices, message])
+
+  function setMessages(invoices) {
+    let invoicesNumber = {
+      draft: 0,
+      pending: 0,
+      paid: 0,
+    }
+
+    let dn = invoicesNumber.draft = countInvoicesByStatus(invoices, "draft");
+    let pen = invoicesNumber.pending = countInvoicesByStatus(invoices, "pending");
+    let pan = invoicesNumber.paid = countInvoicesByStatus(invoices, "paid");
+    
+    if (Object.values(invoices).every((k) => k == 0)) {
+      setMessage("There are 0 invoices");
+      return
+    }
+
+    if (dn === 1 && pen === 0  && pan === 0 ) return setMessage("There is 1 draft invoice");
+    if (dn === 0  && pen === 1  && pan === 0 ) return setMessage("There is 1 pending invoice");
+    if (dn === 0  && pen === 0  && pan === 1 ) return setMessage("There is 1 paid invoice");
+    
+    if (dn >= 1  && pen >= 1  && pan === 0 ) return setMessage(`There are ${dn} draft and ${pen} panding invoices`);
+    if (dn === 0  && pen >= 1  && pan > 1 ) return setMessage(`There are ${pen} pending and ${pan} paid invoices`);
+    if (dn >= 1  && pen === 0  && pan >= 1 ) return setMessage(`There are ${dn} draft and ${pan} paid invoices`);
+
+    if (dn > 1  && pen === 0  && pan === 0) return setMessage(`There are ${dn} draft invoices`);
+    if (dn === 0  && pen > 1  && pan === 0 ) return setMessage(`There are ${pen} panding invoices`);
+    if (dn === 0  && pen === 0  && pan > 1 ) return setMessage(`There are ${pan} paid invoices`);
+
+    if (dn >= 1  && pen >= 1  && pan >= 1 ) return setMessage(`There are ${dn} draft, ${pen} panding, and ${pan} paid invoices`);
+
+  }
+
+
+  function countInvoicesByStatus(invoices, status) {
+    let number = 0;
+    console.log(invoices)
+    invoices.forEach(invoice => {
+      if (invoice.status == status) {
+        number++;
+      }
+    });
+    return number
+  }
+
+
   return (
     <div className="invoices-page__header">
       <div>
-         <h2>Invoices</h2>
+         <h2>{props.totalInvoices} Invoices</h2>
          {useWindowSize().width > 768
-         ? <span>There are 7 total invoices</span>
-         : <span>7 invoices</span>
+         ? <span>{message}</span>
+         : <span>{}</span>
          }
       </div>
       <div>

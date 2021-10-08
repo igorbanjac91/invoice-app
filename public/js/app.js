@@ -2486,10 +2486,9 @@ var Invoices = function Invoices() {
   }, [draftChecked, pendingChecked, paidChecked]);
 
   function fetchInvoices() {
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/invoices").then(function (resposne) {
-      console.log(resposne.data);
-      setInvoices(resposne.data);
-      setFilteredInvoices(resposne.data);
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/invoices").then(function (response) {
+      setInvoices(response.data);
+      setFilteredInvoices(response.data);
     })["catch"](function (e) {
       console.log("errors");
     });
@@ -2542,7 +2541,9 @@ var Invoices = function Invoices() {
       checkStatus: checkStatus,
       draftChecked: draftChecked,
       pendingChecked: pendingChecked,
-      paidChecked: paidChecked
+      paidChecked: paidChecked,
+      invoices: filterdInvoices,
+      totalInvoices: invoices.length
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(InvoicesList, {
       invoices: filterdInvoices
     })]
@@ -2555,20 +2556,67 @@ var InvoicesHeader = function InvoicesHeader(props) {
       toggleFilter = _useState12[0],
       setToggleFilter = _useState12[1];
 
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState14 = _slicedToArray(_useState13, 2),
+      message = _useState14[0],
+      setMessage = _useState14[1];
+
   function toggleFilterBox() {
     setToggleFilter(!toggleFilter);
+  }
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    setMessages(props.invoices);
+  }, [props.invoices, message]);
+
+  function setMessages(invoices) {
+    var invoicesNumber = {
+      draft: 0,
+      pending: 0,
+      paid: 0
+    };
+    var dn = invoicesNumber.draft = countInvoicesByStatus(invoices, "draft");
+    var pen = invoicesNumber.pending = countInvoicesByStatus(invoices, "pending");
+    var pan = invoicesNumber.paid = countInvoicesByStatus(invoices, "paid");
+
+    if (Object.values(invoices).every(function (k) {
+      return k == 0;
+    })) {
+      setMessage("There are 0 invoices");
+      return;
+    }
+
+    if (dn === 1 && pen === 0 && pan === 0) return setMessage("There is 1 draft invoice");
+    if (dn === 0 && pen === 1 && pan === 0) return setMessage("There is 1 pending invoice");
+    if (dn === 0 && pen === 0 && pan === 1) return setMessage("There is 1 paid invoice");
+    if (dn >= 1 && pen >= 1 && pan === 0) return setMessage("There are ".concat(dn, " draft and ").concat(pen, " panding invoices"));
+    if (dn === 0 && pen >= 1 && pan > 1) return setMessage("There are ".concat(pen, " pending and ").concat(pan, " paid invoices"));
+    if (dn >= 1 && pen === 0 && pan >= 1) return setMessage("There are ".concat(dn, " draft and ").concat(pan, " paid invoices"));
+    if (dn > 1 && pen === 0 && pan === 0) return setMessage("There are ".concat(dn, " draft invoices"));
+    if (dn === 0 && pen > 1 && pan === 0) return setMessage("There are ".concat(pen, " panding invoices"));
+    if (dn === 0 && pen === 0 && pan > 1) return setMessage("There are ".concat(pan, " paid invoices"));
+    if (dn >= 1 && pen >= 1 && pan >= 1) return setMessage("There are ".concat(dn, " draft, ").concat(pen, " panding, and ").concat(pan, " paid invoices"));
+  }
+
+  function countInvoicesByStatus(invoices, status) {
+    var number = 0;
+    console.log(invoices);
+    invoices.forEach(function (invoice) {
+      if (invoice.status == status) {
+        number++;
+      }
+    });
+    return number;
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "invoices-page__header",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-        children: "Invoices"
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("h2", {
+        children: [props.totalInvoices, " Invoices"]
       }), (0,_utils__WEBPACK_IMPORTED_MODULE_3__["default"])().width > 768 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-        children: "There are 7 total invoices"
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-        children: "7 invoices"
-      })]
+        children: message
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {})]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "filter-container",
