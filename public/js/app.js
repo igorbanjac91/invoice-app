@@ -2219,6 +2219,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Logo": () => (/* binding */ Logo),
 /* harmony export */   "IconArrowDown": () => (/* binding */ IconArrowDown),
+/* harmony export */   "IconArrowUp": () => (/* binding */ IconArrowUp),
 /* harmony export */   "IconArrowLeft": () => (/* binding */ IconArrowLeft),
 /* harmony export */   "IconArrowRight": () => (/* binding */ IconArrowRight),
 /* harmony export */   "IconCalendar": () => (/* binding */ IconCalendar),
@@ -2257,6 +2258,23 @@ var IconArrowDown = function IconArrowDown() {
       stroke: "#7C5DFA",
       strokeWidth: 2,
       fill: "none"
+    })
+  });
+};
+
+var IconArrowUp = function IconArrowUp() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+    width: 11,
+    height: 7,
+    xmlns: "http://www.w3.org/2000/svg",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("g", {
+      transform: "rotate(180 5.5 3.5)",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+        d: "M1 1l4.228 4.228L9.456 1",
+        stroke: "#7C5DFA",
+        strokeWidth: 2,
+        fill: "none"
+      })
     })
   });
 };
@@ -2440,28 +2458,107 @@ var Invoices = function Invoices() {
       invoices = _useState2[0],
       setInvoices = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      filterdInvoices = _useState4[0],
+      setFilteredInvoices = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      draftChecked = _useState6[0],
+      setDraftChecked = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      pendingChecked = _useState8[0],
+      setPendingChecked = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState10 = _slicedToArray(_useState9, 2),
+      paidChecked = _useState10[0],
+      setPaidChecked = _useState10[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetchInvoices();
   }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    filterInvoicesByStatus();
+  }, [draftChecked, pendingChecked, paidChecked]);
 
   function fetchInvoices() {
     axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/invoices").then(function (resposne) {
       console.log(resposne.data);
       setInvoices(resposne.data);
+      setFilteredInvoices(resposne.data);
     })["catch"](function (e) {
       console.log("errors");
     });
   }
 
+  function checkStatus(value) {
+    switch (value) {
+      case "draft":
+        setDraftChecked(!draftChecked);
+        break;
+
+      case "pending":
+        setPendingChecked(!pendingChecked);
+        break;
+
+      case "paid":
+        setPaidChecked(!paidChecked);
+        break;
+
+      default:
+        console.log("Error: Wrong value for filter");
+    }
+  }
+
+  function filterInvoicesByStatus() {
+    var newInvoices = invoices.filter(function (invoice) {
+      if (invoice.status == "draft") {
+        return draftChecked;
+      }
+
+      if (invoice.status == "pending") {
+        return pendingChecked;
+      }
+
+      if (invoice.status == "paid") {
+        return paidChecked;
+      }
+    });
+
+    if (!draftChecked && !pendingChecked && !paidChecked) {
+      setFilteredInvoices(invoices);
+    } else {
+      setFilteredInvoices(newInvoices);
+    }
+  }
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "invoices-page main-content",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(InvoicesHeader, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(InvoicesList, {
-      invoices: invoices
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(InvoicesHeader, {
+      checkStatus: checkStatus,
+      draftChecked: draftChecked,
+      pendingChecked: pendingChecked,
+      paidChecked: paidChecked
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(InvoicesList, {
+      invoices: filterdInvoices
     })]
   });
 };
 
-var InvoicesHeader = function InvoicesHeader() {
+var InvoicesHeader = function InvoicesHeader(props) {
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+      _useState12 = _slicedToArray(_useState11, 2),
+      toggleFilter = _useState12[0],
+      setToggleFilter = _useState12[1];
+
+  function toggleFilterBox() {
+    setToggleFilter(!toggleFilter);
+  }
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "invoices-page__header",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
@@ -2473,15 +2570,22 @@ var InvoicesHeader = function InvoicesHeader() {
         children: "7 invoices"
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "filter-container",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
           className: "filter-btn",
+          onClick: toggleFilterBox,
           children: [(0,_utils__WEBPACK_IMPORTED_MODULE_3__["default"])().width > 768 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
             children: "Filter by status"
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
             children: "Filter"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Icons__WEBPACK_IMPORTED_MODULE_2__.IconArrowDown, {})]
-        })
+          }), toggleFilter ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Icons__WEBPACK_IMPORTED_MODULE_2__.IconArrowUp, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Icons__WEBPACK_IMPORTED_MODULE_2__.IconArrowDown, {})]
+        }), toggleFilter ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Filter, {
+          checkStatus: props.checkStatus,
+          draftChecked: props.draftChecked,
+          pendingChecked: props.pendingChecked,
+          paidChecked: props.paidChecked
+        }) : null]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
           className: "new-invoice-btn",
@@ -2547,6 +2651,47 @@ var InvoicesListItem = function InvoicesListItem(props) {
         })]
       })]
     })
+  });
+};
+
+var Filter = function Filter(props) {
+  function checkStatus(e) {
+    props.checkStatus(e.target.value);
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    className: "filter-status",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
+      htmlFor: "draft",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+        type: "checkbox",
+        id: "draft",
+        name: "draft",
+        value: "draft",
+        checked: props.draftChecked,
+        onChange: checkStatus
+      }), "Draft"]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
+      htmlFor: "pending",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+        type: "checkbox",
+        id: "pending",
+        name: "pending",
+        value: "pending",
+        checked: props.pendingChecked,
+        onChange: checkStatus
+      }), "Pending"]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
+      htmlFor: "paid",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+        type: "checkbox",
+        id: "paid",
+        name: "paid",
+        value: "paid",
+        checked: props.paidChecked,
+        onChange: checkStatus
+      }), "Paid"]
+    })]
   });
 };
 

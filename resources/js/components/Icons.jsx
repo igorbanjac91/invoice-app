@@ -8,6 +8,14 @@ const IconArrowDown = function() {
   return <svg  width={11} height={7} xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4.228 4.228L9.456 1" stroke="#7C5DFA" strokeWidth={2} fill="none" /></svg>;
 }
 
+const IconArrowUp = function() {
+  return <svg  width={11} height={7} xmlns="http://www.w3.org/2000/svg">
+    <g transform="rotate(180 5.5 3.5)">
+      <path d="M1 1l4.228 4.228L9.456 1" stroke="#7C5DFA" strokeWidth={2} fill="none" />
+    </g>
+  </svg>;
+}
+
 const IconArrowLeft = function() {
   return <svg width={7} height={10} xmlns="http://www.w3.org/2000/svg"><path d="M6.342.886L2.114 5.114l4.228 4.228" stroke="#9277FF" strokeWidth={2} fill="none" /></svg>;
 }
@@ -43,6 +51,7 @@ const IconSun = function() {
 export {
   Logo,
   IconArrowDown,
+  IconArrowUp,
   IconArrowLeft,
   IconArrowRight,
   IconCalendar,
