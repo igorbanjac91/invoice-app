@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   padding: 0;
+  cursor: pointer;
   background: none;
   border: none;
 
@@ -21,6 +22,7 @@
   @include body-1;
   font-weight: 700;
   color: #fff;
+  cursor: pointer;
   background-color: $purple;
   border: none;
   border-radius: 24px;
@@ -30,5 +32,17 @@
     margin-right: 8px;
     background-color: #fff;
     border-radius: 100%;
+  }
+
+  &:hover {
+    background-color: $purple-light;
+  }
+}
+
+.btn-mode {
+  cursor: pointer;
+
+  &:hover path {
+    fill: $text-bright-gray;
   }
 }

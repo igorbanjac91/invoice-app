@@ -2550,7 +2550,7 @@ var Invoices = function Invoices() {
 };
 
 var InvoicesHeader = function InvoicesHeader(props) {
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState12 = _slicedToArray(_useState11, 2),
       toggleFilter = _useState12[0],
       setToggleFilter = _useState12[1];

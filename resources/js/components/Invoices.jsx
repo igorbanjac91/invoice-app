@@ -81,7 +81,7 @@ const Invoices = function() {
 
 const InvoicesHeader = function(props) {
 
-  const [ toggleFilter, setToggleFilter ] = useState(true) 
+  const [ toggleFilter, setToggleFilter ] = useState(false) 
 
   function toggleFilterBox() {
     setToggleFilter(!toggleFilter);
