@@ -2487,8 +2487,8 @@ var Invoices = function Invoices() {
 
   function fetchInvoices() {
     axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/invoices").then(function (response) {
-      setInvoices(response.data);
-      setFilteredInvoices(response.data);
+      setInvoices([]);
+      setFilteredInvoices([]);
     })["catch"](function (e) {
       console.log("errors");
     });
@@ -2544,7 +2544,7 @@ var Invoices = function Invoices() {
       paidChecked: paidChecked,
       invoices: filterdInvoices,
       totalInvoices: invoices.length
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(InvoicesList, {
+    }), invoices.length == 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(EmptyInvoices, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(InvoicesList, {
       invoices: filterdInvoices
     })]
   });
@@ -2582,7 +2582,7 @@ var InvoicesHeader = function InvoicesHeader(props) {
     if (Object.values(invoices).every(function (k) {
       return k == 0;
     })) {
-      setMessage("There are 0 invoices");
+      setMessage("No invoices");
       return;
     }
 
@@ -2612,18 +2612,22 @@ var InvoicesHeader = function InvoicesHeader(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "invoices-page__header",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("h2", {
+      children: [props.totalInvoices == 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
+        children: "Invoices"
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("h2", {
         children: [props.totalInvoices, " Invoices"]
-      }), (0,_utils__WEBPACK_IMPORTED_MODULE_3__["default"])().width > 768 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+      }), (0,_utils__WEBPACK_IMPORTED_MODULE_3__["default"])().width >= 768 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
         children: message
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {})]
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+        children: message
+      })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "filter-container",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
           className: "filter-btn",
           onClick: toggleFilterBox,
-          children: [(0,_utils__WEBPACK_IMPORTED_MODULE_3__["default"])().width > 768 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
+          children: [(0,_utils__WEBPACK_IMPORTED_MODULE_3__["default"])().width >= 768 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
             children: "Filter by status"
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
             children: "Filter"
@@ -2637,13 +2641,32 @@ var InvoicesHeader = function InvoicesHeader(props) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
           className: "new-invoice-btn",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Icons__WEBPACK_IMPORTED_MODULE_2__.IconPlus, {}), (0,_utils__WEBPACK_IMPORTED_MODULE_3__["default"])().width > 768 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Icons__WEBPACK_IMPORTED_MODULE_2__.IconPlus, {}), (0,_utils__WEBPACK_IMPORTED_MODULE_3__["default"])().width >= 768 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
             children: "New Invoice"
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
             children: "New"
           })]
         })
       })]
+    })]
+  });
+};
+
+var EmptyInvoices = function EmptyInvoices() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    className: "empty-invoices",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "empty-image-container",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+        src: "/images/illustration-empty.svg",
+        alt: ""
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
+      children: "There is nothing here"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+      children: ["Create an invoice by clicking the ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+        children: "New"
+      }), " Button and get started"]
     })]
   });
 };

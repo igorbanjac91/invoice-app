@@ -23,8 +23,8 @@ const Invoices = function() {
     axios
       .get("/api/invoices")
       .then( response => {
-        setInvoices(response.data);
-        setFilteredInvoices(response.data);
+        setInvoices([]);
+        setFilteredInvoices([]);
       })
       .catch(e => {
         console.log("errors");
@@ -75,7 +75,10 @@ const Invoices = function() {
                       paidChecked={paidChecked}
                       invoices={filterdInvoices}
                       totalInvoices={invoices.length} />
-      <InvoicesList invoices={filterdInvoices} />
+      { invoices.length == 0 
+      ? <EmptyInvoices />
+      : <InvoicesList invoices={filterdInvoices} />
+      }
     </div>
   )
 }
@@ -106,7 +109,7 @@ const InvoicesHeader = function(props) {
     let pan = invoicesNumber.paid = countInvoicesByStatus(invoices, "paid");
     
     if (Object.values(invoices).every((k) => k == 0)) {
-      setMessage("There are 0 invoices");
+      setMessage("No invoices");
       return
     }
 
@@ -142,17 +145,20 @@ const InvoicesHeader = function(props) {
   return (
     <div className="invoices-page__header">
       <div>
-         <h2>{props.totalInvoices} Invoices</h2>
-         {useWindowSize().width > 768
-         ? <span>{message}</span>
-         : <span>{}</span>
-         }
+        { props.totalInvoices == 0
+        ? <h2>Invoices</h2> 
+        : <h2>{props.totalInvoices} Invoices</h2> 
+        }
+        {useWindowSize().width >= 768
+        ? <span>{message}</span>
+        : <span>{message}</span>
+        }
       </div>
       <div>
         <div className="filter-container">
           <button className="filter-btn"
                   onClick={toggleFilterBox}>
-            {useWindowSize().width > 768
+            {useWindowSize().width >= 768
             ? <h3>Filter by status</h3>
             : <h3>Filter</h3>
             }
@@ -169,7 +175,7 @@ const InvoicesHeader = function(props) {
         <div>
           <button className="new-invoice-btn">
             <IconPlus />
-            {useWindowSize().width > 768 
+            {useWindowSize().width >= 768 
             ? <span>New Invoice</span>
             : <span>New</span>
             }
@@ -180,6 +186,18 @@ const InvoicesHeader = function(props) {
   )
 }
 
+const EmptyInvoices = function() {
+
+  return (
+    <div className="empty-invoices">
+      <div className="empty-image-container">
+        <img src="/images/illustration-empty.svg" alt="" />
+      </div>
+      <h2>There is nothing here</h2>
+      <p>Create an invoice by clicking the <b>New</b> Button and get started</p>
+    </div>
+  )
+}
 
 const InvoicesList = function(props) {
 

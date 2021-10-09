@@ -147,6 +147,38 @@
   .invoice-list-item:last-child {
     margin-bottom: 0;
   }
+
+  .empty-invoices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .empty-image-container {
+      height: 160px;
+      margin-bottom: 40px;
+      margin-top: 70px;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    h2 {
+      margin-bottom: 24px;
+      @include heading-2
+    }
+
+    p {
+      max-width: 200px;
+      @include body-1;
+      color: $text-gray;
+
+      b {
+        font-weight: 700;
+      }
+    }
+  }
 }
 
 /*
@@ -296,6 +328,17 @@
         .dot {
           background-color: $text-bright-gray;
         }
+      }
+    }
+    
+    .empty-invoices {
+  
+      h2 {
+        color: #fff;
+      }
+  
+      p {
+        color: $text-bright-gray;
       }
     }
   }

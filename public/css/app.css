@@ -368,6 +368,38 @@ body {
 .invoices-page .invoice-list-item:last-child {
   margin-bottom: 0;
 }
+.invoices-page .empty-invoices {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.invoices-page .empty-invoices .empty-image-container {
+  height: 160px;
+  margin-bottom: 40px;
+  margin-top: 70px;
+}
+.invoices-page .empty-invoices .empty-image-container img {
+  height: 100%;
+}
+.invoices-page .empty-invoices h2 {
+  margin-bottom: 24px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.63px;
+}
+.invoices-page .empty-invoices p {
+  max-width: 200px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: #888eaf;
+}
+.invoices-page .empty-invoices p b {
+  font-weight: 700;
+}
 
 /*
 -------------------------------------------
@@ -486,6 +518,12 @@ body {
 .dark .invoices-page .invoice-list-item--status-draft .dot {
   background-color: #e0e4fa;
 }
+.dark .invoices-page .empty-invoices h2 {
+  color: #fff;
+}
+.dark .invoices-page .empty-invoices p {
+  color: #e0e4fa;
+}
 .dark .filter-container {
   position: relative;
 }
@@ -579,6 +617,11 @@ body {
     flex: 0 1 auto;
     order: 5;
     margin-left: 6%;
+  }
+  .invoices-page .empty-invoices .empty-image-container {
+    height: 200px;
+    margin-bottom: 64px;
+    margin-top: 178px;
   }
 }
 @media only screen and (min-width: 960px) {
@@ -681,5 +724,8 @@ body {
     flex: 0 1 auto;
     order: 5;
     margin-left: 6%;
+  }
+  .invoices-page .empty-invoices .empty-image-container {
+    margin-top: 119px;
   }
 }
