@@ -1,11 +1,14 @@
 import React  from "react";
+import { IconArrowLeft } from "./Icons";
 import InvoiceStatus from "./InvoiceStatus";
 
 const InvoicePage = () => {
   return (
     <main className="invoice-page">
-      <InvoicePageHeader />
-      <InvoicePageInfo />
+      <div className="main-content">
+        <InvoicePageHeader />
+        <InvoicePageInfo />
+      </div>
       <InvoicePageActions />
     </main>
   )
@@ -15,8 +18,10 @@ const InvoicePage = () => {
 const InvoicePageHeader = () => {
   return (
     <header className="invoice-page__header">
-      <a href="#">Go Back</a>
-      <InvoiceStatus status={"Pending"}/>
+      <a href="#">
+        <IconArrowLeft />
+        Go back
+      </a>
     </header>
   )
 }
@@ -25,7 +30,8 @@ const InvoicePageInfo = () => {
   return (
     <article className="invoice-page__info">
       <header>
-        <span>Status</span>
+        <h4>Status</h4>
+        <InvoiceStatus status={"pending"}/>
       </header>
       <InvoiceBody />
     </article>
@@ -37,8 +43,8 @@ const InvoiceBody = () => {
     <article className="invoice-content">
       <header className="invoice-content__header">
         <div>
-          <h2>#MX19141</h2>
-          <h3>Graphic Design</h3>
+          <h2><span>#</span>MX19141</h2>
+          <h4>Graphic Design</h4>
         </div>
         <div>
           <div>
@@ -52,17 +58,17 @@ const InvoiceBody = () => {
       <section className="invoice-content__dates">
         <div>
           <h4>Invoice Date</h4>
-          <time>21 Aug 2021</time>
+          <time><strong>21 Aug 2021</strong></time>
         </div>
         <div>
           <h4>Payment Due</h4>
-          <time>21 Aug 2021</time>
+          <time><strong>21 Aug 2021</strong></time>
         </div>
       </section>
       <section className="invoice-content__customer-info">
         <div>
           <h4>Bill To</h4>
-          <p><strong>Alex Grim</strong></p>
+          <strong>Alex Grim</strong>
           <div>
             <p>84 Church Way</p>
             <p>Bradford</p>
@@ -72,8 +78,8 @@ const InvoiceBody = () => {
         </div>
       </section>
       <section className="invoice-content__customer-email">
-        <h4>Sent To</h4>
-        <p>alexgrim@gmail.com</p>
+        <h4>Sent to</h4>
+        <strong>alexgrim@gmail.com</strong>
       </section>
       <AmountsSmallDevice />
       {/* <AmountsLargeDevice /> */}
@@ -107,9 +113,11 @@ const AmountsLargeDevice = () => {
 
 const AmountsSmallDevice = () => {
   return (
-    <section>
-      <ItemsListSamllDevice />
-      <div>
+    <section className="amounts">
+      <div className="amounts__items-list">
+        <ItemsListSamllDevice />
+      </div>
+      <div className="amounts__total">
         <h4>Grand Total</h4>
         <strong>$ 556.00</strong>
       </div>
@@ -119,8 +127,7 @@ const AmountsSmallDevice = () => {
 
 const ItemsListSamllDevice = () => {
   return (
-    <div>
-      <ul>
+    <ul>
       <li>
         <div>
           <h3>Banner Design</h3>
@@ -135,8 +142,7 @@ const ItemsListSamllDevice = () => {
         </div>
         <strong>£ 400.00</strong>
       </li>
-      </ul>
-    </div>
+    </ul>
   )
 }
 
@@ -156,9 +162,9 @@ const ItemsListSamllDeviceItem = () => {
 const InvoicePageActions = () => {
   return (
     <div className="invoice-page__actions">
-      <button>Edit</button>
-      <button>Delete</button>
-      <button>Mark as Paid</button>
+      <button className="btn btn-edit">Edit</button>
+      <button className="btn btn-delete">Delete</button>
+      <button className="btn btn-paid">Mark as Paid</button>
     </div>
   )
 }

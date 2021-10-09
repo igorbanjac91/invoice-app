@@ -15,7 +15,6 @@ body {
   grid-template-rows: 72px 1fr;
   height: 100%;
   background-color: $bg-light;
-  overflow: hidden;
 }
 
 .main-header {
@@ -32,4 +31,29 @@ body {
   max-width: 730px;
   padding: 7.3% 6.5%;
   margin: 0 auto;
+}
+
+
+.invoice-page {
+  height: fit-content;
+
+  .main-content {
+    padding-bottom: 56px;
+  }
+
+  .content-container {
+    padding: 32px 24px;
+    margin-bottom: 56px;
+  }
+
+  &__header {
+    margin-bottom: 32px;
+  }
+
+  &__info {
+
+    > header {
+      margin-bottom: 16px;
+    }
+  }
 }

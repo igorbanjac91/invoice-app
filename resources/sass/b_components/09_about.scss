@@ -1,0 +1,50 @@
+[class*="invoice--status"] {
+  align-self: flex-end;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 104px;
+  padding: 13px;
+  @include body-1;
+  font-weight: 700;
+  text-transform: capitalize;
+  border-radius: 8px;
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    margin-right: 8px;
+    border-radius: 100%;
+  }
+}
+
+.invoice {
+
+  &--status-paid {
+    color: $dark-green;
+    background-color: $light-green;
+
+    .dot {
+      background-color: $dark-green;
+    }
+  }
+
+  &--status-pending {
+    color: $dark-orange;
+    background-color: $light-orange;
+
+    .dot {
+      background-color: $dark-orange;
+    }
+  }
+
+  &--status-draft {
+    color: $dark-gray;
+    background-color: $light-gray;
+
+    .dot {
+      background-color: $dark-gray;
+    }
+  }
+}

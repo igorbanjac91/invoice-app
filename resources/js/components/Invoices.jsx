@@ -175,7 +175,7 @@ const InvoicesHeader = function(props) {
           }
         </div>
         <div>
-          <button className="new-invoice-btn">
+          <button className="btn new-invoice-btn">
             <IconPlus />
             {useWindowSize().width >= 768 
             ? <span>New Invoice</span>

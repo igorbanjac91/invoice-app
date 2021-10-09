@@ -26,6 +26,13 @@
   letter-spacing: -0.25px;
 }
 
+@mixin strong {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.31px;
+}
+
 @mixin body-1 {
   font-size: 12px;
   font-weight: 500; 

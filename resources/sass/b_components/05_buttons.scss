@@ -13,19 +13,22 @@
   }
 }
 
+.btn {
+  cursor: pointer;
+  @include body-1;
+  font-weight: 700;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+}
+
 .new-invoice-btn {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 6px;
   padding-right: 14px;
-  @include body-1;
-  font-weight: 700;
-  color: #fff;
-  cursor: pointer;
   background-color: $purple;
-  border: none;
-  border-radius: 24px;
 
   svg {
     padding: 12px;
@@ -45,4 +48,20 @@
   &:hover path {
     fill: $text-bright-gray;
   }
+}
+
+.btn-edit {
+  padding: 16px 24px;
+  color: $text-gray-blue;
+  background-color: $bg-light-blue;
+}
+
+.btn-delete {
+  padding: 16px 24px;
+  background-color: $red;
+}
+
+.btn-paid {
+  padding: 16px 27px;
+  background-color: $purple;
 }
