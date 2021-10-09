@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState }  from "react";
 import { IconArrowDown, IconArrowUp, IconPlus } from "./Icons";
 import useWindowSize from "./utils";
+import InvoiceStatus from "./InvoiceStatus";
 
 const Invoices = function() {
 
@@ -23,8 +24,9 @@ const Invoices = function() {
     axios
       .get("/api/invoices")
       .then( response => {
-        setInvoices([]);
-        setFilteredInvoices([]);
+        const fetchedInvoices = response.data
+        setInvoices(fetchedInvoices);
+        setFilteredInvoices(fetchedInvoices);
       })
       .catch(e => {
         console.log("errors");
@@ -233,10 +235,7 @@ const InvoicesListItem = function(props) {
         <time className="invoice-list-item__date">Due {formattedDate}</time>
         <strong className="invoice-list-item__total" >£ {invoice.total_amount}</strong>
         <span className="invoice-list-item__customer">{customer.name}</span>
-        <div className={`invoice-list-item--status-${invoice.status}`}>
-          <div className="dot"></div>
-          <span>{invoice.status}</span>
-        </div>
+        <InvoiceStatus status={invoice.status}/>
       </div>
     </li>
   )
