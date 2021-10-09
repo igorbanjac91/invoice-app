@@ -160,3 +160,79 @@
     background-color: #fff;
   }
 }
+
+/*
+-------------------------------------------
+                DARK MODE
+-------------------------------------------
+*/
+
+.dark {
+
+  .invoice-page {
+    background-color: $bg-dark;
+    
+    &__header {
+      a {
+        color: #fff;
+      }
+    }
+  
+    &__info {
+  
+      p, h4 {
+        color: $text-bright-gray;
+      }
+        
+      strong {
+        color: #fff;
+      }
+      
+      > * {
+        background-color: $el-bg-dark;
+        box-shadow: 0 10px 10px -10px $black-shadow;
+      }
+  
+      .invoice-content {
+  
+        &__header {
+  
+          h2 {
+            color: #fff;
+          }
+        }
+      }
+  
+      .amounts {
+        width: 100%;
+  
+        &__items-list {
+          background-color: $filter-dark-background;
+  
+          li {
+  
+            h3, strong {
+              color: #fff;
+            }
+  
+            p {
+              color: $text-bright-gray;
+            }
+          }
+        }
+        
+        &__total {
+          background-color: $bg-strong-dark;
+          
+          h4 {
+            color: #fff;
+          }
+        }
+      }
+    }
+  
+    &__actions {
+      background-color: $el-bg-dark;
+    }
+  }
+}

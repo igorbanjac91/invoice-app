@@ -256,31 +256,6 @@
       &__customer {
         color: $text-bright-gray;
       }
-  
-      &--status-paid {
-        background-color: $light-gray-dark-mode;
-  
-        .dot {
-          background-color: $dark-green;
-        }
-      }
-      
-      &--status-pending {
-        background-color: $light-orange-dark-mode;
-  
-        .dot {
-          background-color: $dark-orange;
-        }
-      }
-  
-      &--status-draft {
-        color: $text-bright-gray;
-        background-color: $light-gray-dark-mode;
-  
-        .dot {
-          background-color: $text-bright-gray;
-        }
-      }
     }
     
     .empty-invoices {

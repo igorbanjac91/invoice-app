@@ -244,6 +244,16 @@ body {
   background-color: #7b5cfa;
 }
 
+/*
+-------------------------------------------
+                DARK MODE
+-------------------------------------------
+*/
+.btn-edit {
+  background-color: #252946;
+  color: #e0e4fb;
+}
+
 [class*=invoice--status] {
   align-self: flex-end;
   box-sizing: border-box;
@@ -287,6 +297,31 @@ body {
 }
 .invoice--status-draft .dot {
   background-color: #373b53;
+}
+
+/*
+-------------------------------------------
+                DARK MODE
+-------------------------------------------
+*/
+.dark .invoice--status-paid {
+  background-color: #282b43;
+}
+.dark .invoice--status-paid .dot {
+  background-color: #33d7a0;
+}
+.dark .invoice--status-pending {
+  background-color: #2a2735;
+}
+.dark .invoice--status-pending .dot {
+  background-color: #ff9100;
+}
+.dark .invoice--status-draft {
+  color: #e0e4fa;
+  background-color: #282b43;
+}
+.dark .invoice--status-draft .dot {
+  background-color: #e0e4fa;
 }
 
 ::-webkit-scrollbar {
@@ -538,25 +573,6 @@ body {
 .dark .invoices-page .invoice-list-item__customer {
   color: #e0e4fa;
 }
-.dark .invoices-page .invoice-list-item--status-paid {
-  background-color: #282b43;
-}
-.dark .invoices-page .invoice-list-item--status-paid .dot {
-  background-color: #33d7a0;
-}
-.dark .invoices-page .invoice-list-item--status-pending {
-  background-color: #2a2735;
-}
-.dark .invoices-page .invoice-list-item--status-pending .dot {
-  background-color: #ff9100;
-}
-.dark .invoices-page .invoice-list-item--status-draft {
-  color: #e0e4fa;
-  background-color: #282b43;
-}
-.dark .invoices-page .invoice-list-item--status-draft .dot {
-  background-color: #e0e4fa;
-}
 .dark .invoices-page .empty-invoices h2 {
   color: #fff;
 }
@@ -737,6 +753,52 @@ body {
   justify-content: space-between;
   padding: 22px 24px;
   background-color: #fff;
+}
+
+/*
+-------------------------------------------
+                DARK MODE
+-------------------------------------------
+*/
+.dark .invoice-page {
+  background-color: #141624;
+}
+.dark .invoice-page__header a {
+  color: #fff;
+}
+.dark .invoice-page__info p, .dark .invoice-page__info h4 {
+  color: #e0e4fa;
+}
+.dark .invoice-page__info strong {
+  color: #fff;
+}
+.dark .invoice-page__info > * {
+  background-color: #1e2139;
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.25);
+}
+.dark .invoice-page__info .invoice-content__header h2 {
+  color: #fff;
+}
+.dark .invoice-page__info .amounts {
+  width: 100%;
+}
+.dark .invoice-page__info .amounts__items-list {
+  background-color: #252946;
+}
+.dark .invoice-page__info .amounts__items-list li h3, .dark .invoice-page__info .amounts__items-list li strong {
+  color: #fff;
+}
+.dark .invoice-page__info .amounts__items-list li p {
+  color: #e0e4fa;
+}
+.dark .invoice-page__info .amounts__total {
+  background-color: #0d0e17;
+}
+.dark .invoice-page__info .amounts__total h4 {
+  color: #fff;
+}
+.dark .invoice-page__actions {
+  background-color: #1e2139;
 }
 
 @media only screen and (min-width: 768px) {

@@ -65,3 +65,15 @@
   padding: 16px 27px;
   background-color: $purple;
 }
+
+
+/*
+-------------------------------------------
+                DARK MODE
+-------------------------------------------
+*/
+
+.btn-edit { 
+  background-color: $bg-edit-dark-mode;
+  color: $text-edit-dark-mode;
+}
