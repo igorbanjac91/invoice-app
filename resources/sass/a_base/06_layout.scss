@@ -36,9 +36,11 @@ body {
 
 .invoice-page {
   height: fit-content;
-
+  
   .main-content {
+    max-width: 100%;
     padding-bottom: 56px;
+    margin: 0;
   }
 
   .content-container {
@@ -51,6 +53,7 @@ body {
   }
 
   &__info {
+    max-width: 730px;
 
     > header {
       margin-bottom: 16px;

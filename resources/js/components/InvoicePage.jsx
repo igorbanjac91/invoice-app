@@ -1,15 +1,17 @@
 import React  from "react";
 import { IconArrowLeft } from "./Icons";
 import InvoiceStatus from "./InvoiceStatus";
+import useWindowSize from "./utils";
 
 const InvoicePage = () => {
+
   return (
     <main className="invoice-page">
       <div className="main-content">
         <InvoicePageHeader />
         <InvoicePageInfo />
       </div>
-      <InvoicePageActions />
+      { useWindowSize().width < 768 && <InvoicePageActions /> }
     </main>
   )
 }
@@ -30,8 +32,11 @@ const InvoicePageInfo = () => {
   return (
     <article className="invoice-page__info">
       <header>
-        <h4>Status</h4>
-        <InvoiceStatus status={"pending"}/>
+        <div className="status-container">
+          <h4>Status</h4>
+          <InvoiceStatus status={"pending"}/>
+        </div>
+        { useWindowSize().width >= 768 && <InvoicePageActions /> }
       </header>
       <InvoiceBody />
     </article>
@@ -81,29 +86,44 @@ const InvoiceBody = () => {
         <h4>Sent to</h4>
         <strong>alexgrim@gmail.com</strong>
       </section>
-      <AmountsSmallDevice />
-      {/* <AmountsLargeDevice /> */}
+      { useWindowSize().width >= 768 
+      ? <AmountsLargeDevice />
+      : <AmountsSmallDevice />
+      } 
     </article>
   )
 }
 
 const AmountsLargeDevice = () => {
   return (
-    <section>
-      <table>
+    <section className="table-container">
+      <table className="invoice-table">
         <thead>
-          <th>Item Name</th>
-          <th>QTY.</th>
-          <th>Price</th>
-          <th>Total</th>
+          <tr className="columns-names">
+            <th className="columns-names__item-name">Item Name</th>
+            <th className="columns-names__quantity">QTY.</th>
+            <th className="columns-names__price">Price</th>
+            <th className="columns-names__total">Total</th>
+          </tr>
         </thead>
         <tbody>
-          {/* invoice items */}
+          <tr>
+            <td className="invoice-table__item-name">Banner Design</td>
+            <td className="invoice-table__item-quantity">1</td>
+            <td className="invoice-table__item-price">£ 156.00</td>
+            <td className="invoice-table__item-subtotal">£ 156.00</td>
+          </tr>
+          <tr>
+            <td className="invoice-table__item-name">Banner Design</td>
+            <td className="invoice-table__item-quantity">1</td>
+            <td className="invoice-table__item-price">£ 156.00</td>
+            <td className="invoice-table__item-subtotal">£ 156.00</td>
+          </tr>
         </tbody>
         <tfoot>
           <tr>
-            <th colSpan="3">Amount Due</th>
-            <td>£ 556.00</td>
+            <th colSpan="2">Amount Due</th>
+            <td colSpan="2" className="invoice-table__amount-due">£ 556.00</td>
           </tr>
         </tfoot>
       </table>

@@ -1,0 +1,117 @@
+.table-container {
+  width: 100%;
+}
+
+.invoice-table {
+  width: 100%;
+  margin-top: 48px;
+  background-color: $bg-light-blue;
+
+  th, td {
+    padding: 16px;
+  }
+
+  th {
+    padding-top: 32px;
+  }
+
+  th:first-child,
+  td:first-child {
+    padding-left: 32px;
+  }
+
+  th:last-child,
+  td:last-child {
+    padding-right: 32px;
+  }
+
+  thead, tbody {
+    background-color: $bg-light-blue;
+  }
+
+  tbody {
+    @include heading-4;
+
+    tr:last-child {
+      
+      td {
+        padding-bottom: 32px;
+      }
+    }
+  }
+
+  .columns-names {
+    @include body-2;
+    color: $text-gray-blue;
+    font-weight: 500;
+
+    &__item-name {
+      width: 50%;
+      width: auto;
+      text-align: left;
+      border-top-left-radius: 8px;
+    }
+    
+    &__quantity {
+      width: 10%;
+      text-align: center;
+    }
+    
+    &__price {
+      width: 20%;
+      text-align: right;
+    }
+    
+    &__total {
+      width: 20%;
+      text-align: right;
+      border-top-right-radius: 8px;
+    }
+  }
+  
+  &__item-name {
+    text-align: left;
+  }
+  
+  &__item-quantity {
+    color: $text-gray-blue;
+    text-align: center;
+  }
+  
+  &__item-price {
+    color: $text-gray-blue;
+    text-align: right;
+  }
+  
+  &__item-subtotal {
+    text-align: right;
+  }
+
+  tfoot {
+    background-color: $dark-gray;
+
+    tr {
+      background-color: $dark-gray;
+    }
+
+    th {
+      padding: 0;
+      @include body-2;
+      color: $text-bright-gray;
+      text-align: left;
+      border-bottom-left-radius: 8px;
+      vertical-align: middle;
+    }
+    
+    td {
+      padding: 24px 32px;
+      vertical-align: middle;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      color: #fff;
+      text-align: right;
+      border-bottom-right-radius: 8px;
+    }
+  }
+}

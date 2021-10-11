@@ -88,7 +88,7 @@
         margin-left: 7%;
       }
       
-      [class*="invoice-list-item--status"] {
+      [class*="invoice--status"] {
         flex: 0 1 auto;
         order: 5;
         margin-left: 6%;
@@ -104,4 +104,82 @@
       }
     }
   }  
+  
+/*
+-------------------------------------------
+              INVOICE PAGE
+-------------------------------------------
+*/
+  
+  
+  .invoice-page {
+  
+    &__info {
+
+      .status-container {
+        justify-content: flex-start;
+        width: auto;
+
+        h4 {
+          margin-right: 16px;
+        }
+      }
+
+      strong {
+        font-size: 15px;
+      }
+      
+      > * {
+        padding: 32px;
+      }
+  
+      > header {
+        padding: 20px 32px;
+        margin-bottom: 24px;
+      }
+  
+      .invoice-content {
+        justify-content: flex-start;
+
+        &__header {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 21px;
+
+          h2 {
+            margin-bottom: 8px;
+            font-size: 16px;
+          }
+    
+          > div:last-child {
+            text-align: right;
+          }
+        }
+  
+        &__dates {
+          flex: 0 1 auto;
+          margin-right: 98px;
+        }
+        
+        &__customer-info {
+          flex: 0 1 auto;
+          margin-right: 110px;
+        }
+        
+        &__customer-email {
+          flex: 0 1 auto;  
+          margin: 0;
+        }
+      }
+    }
+  
+    &__actions {
+      padding: 0px;
+
+      button {
+        margin-left: 8px;
+      }
+    }
+  }
 }
+

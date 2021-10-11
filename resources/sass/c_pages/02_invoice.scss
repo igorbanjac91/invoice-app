@@ -1,11 +1,8 @@
 .invoice-page {
   background-color: $bg-light;
 
-  .content-container {
-    padding: 32px 24px;
-  }
-
   &__header {
+
     a {
       @include heading-4;
       color: #000;
@@ -17,6 +14,13 @@
   }
 
   &__info {
+
+    .status-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
 
     p, h4 {
       color: $text-gray-blue;
