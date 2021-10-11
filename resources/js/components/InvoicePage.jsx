@@ -1,9 +1,14 @@
 import React  from "react";
+import { useParams } from "react-router";
 import { IconArrowLeft } from "./Icons";
 import InvoiceStatus from "./InvoiceStatus";
 import useWindowSize from "./utils";
 
 const InvoicePage = () => {
+
+  let invoiceId = useParams();
+
+  console.log(invoiceId);
 
   return (
     <main className="invoice-page">
@@ -20,7 +25,7 @@ const InvoicePage = () => {
 const InvoicePageHeader = () => {
   return (
     <header className="invoice-page__header">
-      <a href="#">
+      <a href="/">
         <IconArrowLeft />
         Go back
       </a>

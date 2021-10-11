@@ -49,11 +49,12 @@
     border-radius: 8px;
     box-shadow: 0 10px 10px -10px $blue-shadow;
     
-    > div {
+    > a {
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
       width: 100%;
+      color: #000;
       text-align: right;
     }
 

@@ -3,6 +3,7 @@ import React, { useEffect, useState }  from "react";
 import { IconArrowDown, IconArrowUp, IconPlus } from "./Icons";
 import useWindowSize from "./utils";
 import InvoiceStatus from "./InvoiceStatus";
+import { Link } from "react-router-dom";
 
 const Invoices = function() {
 
@@ -230,13 +231,13 @@ const InvoicesListItem = function(props) {
 
   return (
     <li className="invoice-list-item">
-      <div>
+      <Link to={`/invoices/${invoice.invoice_number}`}>
         <h4 className="invoice-list-item__id" ><span>#</span>{invoice.invoice_number}</h4>
         <time className="invoice-list-item__date">Due {formattedDate}</time>
         <strong className="invoice-list-item__total" >£ {invoice.total_amount}</strong>
         <span className="invoice-list-item__customer">{customer.name}</span>
         <InvoiceStatus status={invoice.status}/>
-      </div>
+      </Link>
     </li>
   )
 }

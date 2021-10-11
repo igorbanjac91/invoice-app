@@ -541,11 +541,12 @@ body {
   border-radius: 8px;
   box-shadow: 0 10px 10px -10px rgba(71, 84, 158, 0.104);
 }
-.invoices-page .invoice-list-item > div {
+.invoices-page .invoice-list-item > a {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
+  color: #000;
   text-align: right;
 }
 .invoices-page .invoice-list-item__id {
@@ -1000,7 +1001,7 @@ body {
     letter-spacing: -1px;
     margin-bottom: 8px;
   }
-  .invoices-page .invoice-list-item > div {
+  .invoices-page .invoice-list-item > a {
     flex-direction: row;
     align-items: center;
   }
@@ -1163,7 +1164,7 @@ body {
     letter-spacing: -1px;
     margin-bottom: 8px;
   }
-  .invoices-page .invoice-list-item > div {
+  .invoices-page .invoice-list-item > a {
     flex-direction: row;
     align-items: center;
   }
