@@ -364,6 +364,49 @@ body {
   border-bottom-right-radius: 8px;
 }
 
+/*
+-------------------------------------------
+                DARK MODE
+-------------------------------------------
+*/
+.dark .invoice-table {
+  background-color: #252946;
+}
+.dark .invoice-table th:first-child,
+.dark .invoice-table td:first-child {
+  padding-left: 32px;
+}
+.dark .invoice-table thead, .dark .invoice-table tbody {
+  background-color: #252946;
+}
+.dark .invoice-table .columns-names {
+  color: #e0e4fb;
+}
+.dark .invoice-table__item-name {
+  color: #fff;
+}
+.dark .invoice-table__item-quantity {
+  color: #e0e4fb;
+}
+.dark .invoice-table__item-price {
+  color: #e0e4fb;
+}
+.dark .invoice-table__item-subtotal {
+  color: #fff;
+}
+.dark .invoice-table tfoot {
+  background-color: #0d0e17;
+}
+.dark .invoice-table tfoot tr {
+  background-color: #0d0e17;
+}
+.dark .invoice-table tfoot th {
+  color: #fff;
+}
+.dark .invoice-table tfoot td {
+  color: #fff;
+}
+
 [class*=invoice--status] {
   align-self: flex-end;
   box-sizing: border-box;

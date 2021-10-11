@@ -115,3 +115,63 @@
     }
   }
 }
+
+
+
+/*
+-------------------------------------------
+                DARK MODE
+-------------------------------------------
+*/
+
+.dark {
+
+  .invoice-table {
+    background-color: $filter-dark-background;
+    
+    th:first-child,
+    td:first-child {
+      padding-left: 32px;
+    }
+    
+    thead, tbody {
+      background-color: $filter-dark-background;
+    }
+  
+    .columns-names {
+      color: $text-edit-dark-mode;
+    }
+    
+    &__item-name {
+      color: #fff;
+    }
+    
+    &__item-quantity {
+      color: $text-edit-dark-mode;
+    }
+    
+    &__item-price {
+      color: $text-edit-dark-mode;
+    }
+    
+    &__item-subtotal {
+      color: #fff;
+    }
+  
+    tfoot {
+      background-color: $bg-strong-dark;
+  
+      tr {
+        background-color: $bg-strong-dark;
+      }
+  
+      th {
+        color: #fff;
+      }
+      
+      td {
+        color: #fff;
+      }
+    }
+  }
+}
