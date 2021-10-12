@@ -18,7 +18,6 @@ const InvoicePage = () => {
     axios
       .get(`/api/invoices/${invoiceId}`)
       .then(response => {
-        console.log(response)
         let fetchedInvoice = response.data;
         setInvoice(fetchedInvoice);
       })

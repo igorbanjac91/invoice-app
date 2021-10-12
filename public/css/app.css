@@ -260,6 +260,124 @@ body {
   color: #e0e4fb;
 }
 
+.new-invoice-form {
+  position: absolute;
+  top: 72px;
+  left: 0;
+  z-index: 100;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 32px 24px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: width 0.8s;
+}
+.new-invoice-form__header {
+  margin-bottom: 24px;
+}
+.new-invoice-form__header a {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: #000;
+}
+.new-invoice-form__header a svg {
+  margin-right: 24px;
+}
+.new-invoice-form h2 {
+  margin-bottom: 24px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.63px;
+  font-size: 24px;
+}
+
+.invoice-form fieldset {
+  margin-bottom: 40px;
+}
+.invoice-form fieldset legend {
+  margin-bottom: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: #7b5cfa;
+}
+.invoice-form .field {
+  margin-bottom: 24px;
+}
+.invoice-form .field label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  font-weight: 500;
+  color: #7f89c3;
+}
+.invoice-form input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 48px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  border: 1px solid #e0e4fb;
+  border-radius: 4px;
+  text-indent: 20px;
+}
+.invoice-form input:focus {
+  outline: 1px solid #9175ff;
+}
+.invoice-form .bill-from {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.invoice-form .bill-from__name-field {
+  flex: 0 1 100%;
+}
+.invoice-form .bill-from__city-field {
+  flex: 0 1 45%;
+}
+.invoice-form .bill-from__post-code-field {
+  flex: 0 1 45%;
+}
+.invoice-form .bill-from__country-field {
+  flex: 0 1 100%;
+  margin-bottom: 0;
+}
+.invoice-form .bill-to {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.invoice-form .bill-to__name-field {
+  flex: 0 1 100%;
+}
+.invoice-form .bill-to__email-field {
+  flex: 0 1 100%;
+}
+.invoice-form .bill-to__address-field {
+  flex: 0 1 100%;
+}
+.invoice-form .bill-to__city-field {
+  flex: 0 1 45%;
+}
+.invoice-form .bill-to__post-code-field {
+  flex: 0 1 45%;
+}
+.invoice-form .bill-to__country-field {
+  flex: 0 1 100%;
+  margin-bottom: 0;
+}
+.invoice-form .invoice-info__date input {
+  text-indent: 10px;
+}
 .table-container {
   width: 100%;
 }
@@ -450,6 +568,78 @@ body {
 }
 .invoice--status-draft .dot {
   background-color: #373b53;
+}
+
+/*
+-------------------------------------------
+                DATE PICKER
+-------------------------------------------
+*/
+.date-picker {
+  position: relative;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+}
+.date-picker__display-date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  padding: 0 20px;
+  margin-bottom: 8px;
+  border: 1px solid #e0e4fb;
+  border-radius: 4px;
+}
+.date-picker__box-dates {
+  position: absolute;
+  top: 56px;
+  left: 50%;
+  box-sizing: border-box;
+  display: none;
+  width: 242px;
+  padding: 32px 20px;
+  padding-bottom: 16px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px 0px rgba(71, 84, 158, 0.25);
+  transform: translateX(-50%);
+}
+.date-picker__box-dates .months {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 32px;
+  text-align: center;
+}
+.date-picker__box-dates .months button {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.date-picker__box-dates .days {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+}
+.date-picker__box-dates .days .day {
+  display: inline-block;
+  width: 16px;
+  margin-right: 15px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+.date-picker__box-dates .days .day:hover {
+  color: #9175ff;
+}
+.date-picker__box-dates .days .day:nth-child(7n) {
+  margin-right: 0;
 }
 
 /*

@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState }  from "react";
-import { IconArrowDown, IconArrowUp, IconPlus } from "./Icons";
-import { useWindowSize, formatDate } from "./utils";
+import { IconArrowDown, IconArrowUp, IconPlus, IconArrowLeft } from "./Icons";
+import { useWindowSize, formatDate, formatPrice } from "./utils";
 import InvoiceStatus from "./InvoiceStatus";
 import { Link } from "react-router-dom";
+import InvoiceForm from "./InvoiceForm";
 
 const Invoices = function() {
 
@@ -70,6 +71,13 @@ const Invoices = function() {
     }
   }
     
+  function showForm() {
+    let newInvoiceFormContainer = document.querySelector(".new-invoice-form");
+    newInvoiceFormContainer.style.paddingLeft = "24px";
+    newInvoiceFormContainer.style.paddingRight = "24px";
+    newInvoiceFormContainer.style.width = "100%";
+  }
+
   return (
     <div className="invoices-page main-content">
       <InvoicesHeader checkStatus={checkStatus} 
@@ -77,11 +85,22 @@ const Invoices = function() {
                       pendingChecked={pendingChecked}
                       paidChecked={paidChecked}
                       invoices={filterdInvoices}
-                      totalInvoices={invoices.length} />
+                      totalInvoices={invoices.length}
+                      showForm={showForm} />
       { invoices.length == 0 
       ? <EmptyInvoices />
       : <InvoicesList invoices={filterdInvoices} />
       }
+      <div className="new-invoice-form">
+        <header className="new-invoice-form__header">
+          <a href="/">
+            <IconArrowLeft />
+            Go back
+          </a>
+        </header>
+        <h2>New Invoice</h2>
+        <InvoiceForm />
+      </div>
     </div>
   )
 }
@@ -135,7 +154,6 @@ const InvoicesHeader = function(props) {
 
   function countInvoicesByStatus(invoices, status) {
     let number = 0;
-    console.log(invoices)
     invoices.forEach(invoice => {
       if (invoice.status == status) {
         number++;
@@ -144,6 +162,9 @@ const InvoicesHeader = function(props) {
     return number
   }
 
+  function showForm() {
+    props.showForm();
+  }
 
   return (
     <div className="invoices-page__header">
@@ -176,7 +197,8 @@ const InvoicesHeader = function(props) {
           }
         </div>
         <div>
-          <button className="btn new-invoice-btn">
+          <button className="btn new-invoice-btn"
+                  onClick={showForm}>
             <IconPlus />
             {useWindowSize().width >= 768 
             ? <span>New Invoice</span>
@@ -229,7 +251,7 @@ const InvoicesListItem = function(props) {
       <Link to={`/invoices/${invoice.invoice_number}`}>
         <h4 className="invoice-list-item__id" ><span>#</span>{invoice.invoice_number}</h4>
         <time className="invoice-list-item__date">Due {formatDate(invoice.created_at)}</time>
-        <strong className="invoice-list-item__total" >£ {invoice.total_amount}</strong>
+        <strong className="invoice-list-item__total" >{formatPrice(invoice.total_amount)}</strong>
         <span className="invoice-list-item__customer">{customer.name}</span>
         <InvoiceStatus status={invoice.status}/>
       </Link>

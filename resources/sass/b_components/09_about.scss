@@ -49,6 +49,88 @@
   }
 }
 
+
+
+/*
+-------------------------------------------
+                DATE PICKER
+-------------------------------------------
+*/
+
+
+.date-picker {
+  position: relative;
+  width: 100%;
+  @include heading-4;
+  
+  &__display-date {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    padding: 0 20px;
+    margin-bottom: 8px;
+    border: 1px solid $text-edit-dark-mode;
+    border-radius: 4px;
+  }
+  
+  &__box-dates {
+    position: absolute;
+    top: 56px;
+    left: 50%;
+    box-sizing: border-box;
+    display: none;
+    width: 242px;
+    padding: 32px 20px;
+    padding-bottom: 16px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px 0px $blue-darken-shadow;
+    transform: translateX(-50%);
+    
+    .months {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 32px;
+      text-align: center;
+
+      button {
+        background-color: transparent;
+        border: none;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+      }
+    }
+    
+    .days {
+      box-sizing: border-box;
+      width: 100%;
+      margin: 0 auto;
+      
+      .day {
+        display: inline-block;
+        width: 16px;
+        margin-right: 15px;
+        margin-bottom: 16px;
+        cursor: pointer;
+        text-align: center;
+  
+        &:hover {
+          color: $purple-light;
+        }
+      }
+
+      .day:nth-child(7n) {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+
 /*
 -------------------------------------------
                 DARK MODE
