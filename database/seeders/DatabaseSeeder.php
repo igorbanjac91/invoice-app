@@ -55,7 +55,9 @@ class DatabaseSeeder extends Seeder
             'payment_term' => 1,
             'status' => 'paid',
             'user_id' => $user->id,
-            'customer_id' => $customer->id
+            'customer_id' => $customer->id,
+            'user_address_id' => $user->addresses->first()->id,
+            'customer_address_id' => $customer->addresses->first()->id
         ]);
 
 
@@ -87,7 +89,9 @@ class DatabaseSeeder extends Seeder
             'payment_term' => 30,
             'status' => 'pending',
             'user_id' => $user->id,
-            'customer_id' => $customer->id
+            'customer_id' => $customer->id,
+            'user_address_id' => $user->addresses->first()->id,
+            'customer_address_id' => $customer->addresses->first()->id
         ]);
 
 
@@ -125,7 +129,9 @@ class DatabaseSeeder extends Seeder
             'payment_term' => 7,
             'status' => 'paid',
             'user_id' => $user->id,
-            'customer_id' => $customer->id
+            'customer_id' => $customer->id,
+            'user_address_id' => $user->addresses->first()->id,
+            'customer_address_id' => $customer->addresses->first()->id
         ]);
 
 
@@ -157,7 +163,9 @@ class DatabaseSeeder extends Seeder
             'payment_term' => 1,
             'status' => 'pending',
             'user_id' => $user->id,
-            'customer_id' => $customer->id
+            'customer_id' => $customer->id,
+            'user_address_id' => $user->addresses->first()->id,
+            'customer_address_id' => $customer->addresses->first()->id
         ]);
 
 
@@ -189,7 +197,9 @@ class DatabaseSeeder extends Seeder
             'payment_term' => 7,
             'status' => 'pending',
             'user_id' => $user->id,
-            'customer_id' => $customer->id
+            'customer_id' => $customer->id,
+            'user_address_id' => $user->addresses->first()->id,
+            'customer_address_id' => $customer->addresses->first()->id
         ]);
 
 
@@ -225,7 +235,9 @@ class DatabaseSeeder extends Seeder
             'payment_term' => 30,
             'status' => 'pending',
             'user_id' => $user->id,
-            'customer_id' => $customer->id
+            'customer_id' => $customer->id,
+            'user_address_id' => $user->addresses->first()->id,
+            'customer_address_id' => $customer->addresses->first()->id
         ]);
 
 
@@ -257,7 +269,9 @@ class DatabaseSeeder extends Seeder
             'payment_term' => 7,
             'status' => 'draft',
             'user_id' => $user->id,
-            'customer_id' => $customer->id
+            'customer_id' => $customer->id,
+            'user_address_id' => $user->addresses->first(),
+            'customer_address_id' => $customer->addresses->first()
         ]);
 
 

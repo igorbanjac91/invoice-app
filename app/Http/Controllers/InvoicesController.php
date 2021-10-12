@@ -37,7 +37,11 @@ class InvoicesController extends Controller
      */
     public function show($id)
     {
-        //
+        return Invoice::with( 'user', 
+                              'customer',
+                              'user_address', 
+                              'customer_address',
+                              'items' )->find($id);
     }
 
     /**

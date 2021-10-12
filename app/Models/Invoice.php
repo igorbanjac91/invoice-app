@@ -63,4 +63,11 @@ class Invoice extends Model
         return $this->belongsToMany(Item::class)->withPivot('quantity');
     }
     
+    public function user_address() {
+        return $this->belongsTo(Address::class, 'user_address_id');
+    }
+
+    public function customer_address() {
+        return $this->belongsTo(Address::class, 'customer_address_id');
+    }
 }

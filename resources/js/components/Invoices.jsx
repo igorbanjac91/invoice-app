@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState }  from "react";
 import { IconArrowDown, IconArrowUp, IconPlus } from "./Icons";
-import useWindowSize from "./utils";
+import { useWindowSize, formatDate } from "./utils";
 import InvoiceStatus from "./InvoiceStatus";
 import { Link } from "react-router-dom";
 
@@ -223,17 +223,12 @@ const InvoicesListItem = function(props) {
 
   let invoice = props.invoice;
   let customer = invoice.customer;
-  const date = new Date(invoice.created_at);
-  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov"];
-  const [day, month, year] = [date.getDate(), date.getMonth(), date.getFullYear()];
-  const formattedDate = `${day} ${monthNames[month]} ${year}`; 
-
 
   return (
     <li className="invoice-list-item">
       <Link to={`/invoices/${invoice.invoice_number}`}>
         <h4 className="invoice-list-item__id" ><span>#</span>{invoice.invoice_number}</h4>
-        <time className="invoice-list-item__date">Due {formattedDate}</time>
+        <time className="invoice-list-item__date">Due {formatDate(invoice.created_at)}</time>
         <strong className="invoice-list-item__total" >£ {invoice.total_amount}</strong>
         <span className="invoice-list-item__customer">{customer.name}</span>
         <InvoiceStatus status={invoice.status}/>

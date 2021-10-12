@@ -15,6 +15,7 @@ use App\Http\Controllers\InvoicesController;
 |
 */
 Route::get('/invoices', [ InvoicesController::class, 'index']);
+Route::get('/invoices/{id}', [ InvoicesController::class, 'show']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

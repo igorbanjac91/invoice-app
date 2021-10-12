@@ -27,4 +27,17 @@ function useWindowSize() {
   return windowSize;
 }
 
-export default useWindowSize;
+
+function formatDate(date) {
+  let newDate = new Date(date);
+  let monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov"];
+  let [day, month, year] = [newDate.getDate(), newDate.getMonth(), newDate.getFullYear()];
+  let formattedDate = `${day} ${monthNames[month]} ${year}`; 
+  return formattedDate
+}
+
+function formatPrice(price) {
+  return `£ ${Number(price).toFixed(2)}`;
+}
+
+export {useWindowSize, formatDate, formatPrice };
