@@ -597,6 +597,7 @@ body {
   position: absolute;
   top: 56px;
   left: 50%;
+  z-index: 100;
   box-sizing: border-box;
   display: none;
   width: 242px;
@@ -640,6 +641,54 @@ body {
 }
 .date-picker__box-dates .days .day:nth-child(7n) {
   margin-right: 0;
+}
+
+/*
+-------------------------------------------
+                SELECT TERM
+-------------------------------------------
+*/
+.select-terms {
+  position: relative;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+}
+.select-terms__term-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  padding: 0 20px;
+  cursor: pointer;
+  border: 1px solid #e0e4fb;
+  border-radius: 4px;
+}
+.select-terms__options-box {
+  position: absolute;
+  top: 56px;
+  left: 50%;
+  display: none;
+  width: 100%;
+  max-width: 240px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px 0px rgba(71, 84, 158, 0.25);
+  transform: translateX(-50%);
+}
+.select-terms__options-box .option-container {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 16px 24px;
+  border-bottom: 1px solid #e0e4fb;
+}
+.select-terms__options-box .option-container:last-child {
+  border-bottom: none;
+}
+.select-terms__options-box .option-container:hover {
+  color: #9175ff;
 }
 
 /*

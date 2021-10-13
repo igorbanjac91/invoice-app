@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { IconArrowLeft, IconArrowRight, IconCalendar } from "./Icons";
+import { IconArrowDown, IconArrowLeft, IconArrowRight, IconCalendar } from "./Icons";
 
 const InvoiceForm = () => {
 
@@ -54,17 +54,17 @@ const InvoiceForm = () => {
       <fieldset className="invoice-info">
         <div className="field invoice-info__date">
           <label htmlFor="invoice-date">Invoice Date</label>
-          {/* <input type="date" name="invoice-date" /> */}
           <DatePicker />
         </div>
         <div className="field invoice-info__term">
           <label htmlFor="term">Payment Terms</label>
-          <select name="term" id="term">
+          {/* <select name="term" id="term">
             <option value="1">Net 1 Day</option>
             <option value="7">Net 7 Days</option>
             <option value="14">Net 14 Days</option>
             <option value="30">Net 30 Days</option>
-          </select>
+          </select> */}
+          <SelectTerm />
         </div>
         <div className="field invoice-info__description">
           <label htmlFor="description">Project Description</label>
@@ -104,6 +104,7 @@ const InvoiceForm = () => {
   )
 }
 
+// Start with the current date
 
 const DatePicker = () => {
   
@@ -200,6 +201,8 @@ const DatePicker = () => {
   function showBoxDates() {
     let displayDate = document.querySelector(".date-picker__display-date");
     let boxDates = document.querySelector(".date-picker__box-dates");
+    let boxOptions = document.querySelector(".select-terms__options-box")
+    boxOptions.style.display = "none";
     boxDates.style.display = "block";
     displayDate.style.borderColor = "rgb(145, 117, 255)";
   }
@@ -235,4 +238,72 @@ const DatePicker = () => {
   )
 }
 
+
+const SelectTerm = () => {
+
+  const [ currentTerm, setCurrentTerm ] = useState(30);
+  let body = document.querySelector("body");
+
+  function formatDispayTermText(currentTerm) {
+    if (currentTerm == 1) {
+      return "Net 1 Day";
+    } else {
+      return `Net ${currentTerm} Days`;
+    }
+  }
+
+  function handleSelectOption(value) {
+    setCurrentTerm(value);
+  }
+
+  function toggleBoxOptions(e) {
+    e.stopPropagation();
+    showOptions();
+  }
+
+  body.addEventListener("click", (e) => {
+    e.stopPropagation();
+    hideOptions();
+  })
+
+  function showOptions() {
+    let boxOptions = document.querySelector(".select-terms__options-box")
+    let boxDates = document.querySelector(".date-picker__box-dates");
+    boxOptions.style.display = "block";
+    boxDates.style.display = "none";
+  }
+
+  function hideOptions() {
+    let boxOptions = document.querySelector(".select-terms__options-box")
+    boxOptions.style.display = "none";
+  }
+
+  return (
+    <div className="select-terms">
+      <div onClick={toggleBoxOptions} 
+           className="select-terms__term-display">
+        <span>{formatDispayTermText(currentTerm)}</span>
+        <IconArrowDown />
+      </div>
+      <div className="select-terms__options-box">
+        <div onClick={() => handleSelectOption(1)}
+             className="option-container" >
+          <span>Net 1 Day</span>
+        </div>
+        <div onClick={() => handleSelectOption(7)}
+             className="option-container">
+          <span>Net 7 Days</span>
+        </div>
+        <div onClick={() => handleSelectOption(14)}
+             className="option-container">
+          <span>Net 14 Days</span>
+        </div>
+        <div onClick={() => handleSelectOption(30)}
+             className="option-container">
+          <span>Net 30 Days</span>
+        </div>
+      </div>
+    </div>
+  )
+}
 export default InvoiceForm;

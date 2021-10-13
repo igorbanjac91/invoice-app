@@ -2535,23 +2535,7 @@ var InvoiceForm = function InvoiceForm() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
           htmlFor: "term",
           children: "Payment Terms"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
-          name: "term",
-          id: "term",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-            value: "1",
-            children: "Net 1 Day"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-            value: "7",
-            children: "Net 7 Days"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-            value: "14",
-            children: "Net 14 Days"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-            value: "30",
-            children: "Net 30 Days"
-          })]
-        })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(SelectTerm, {})]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "field invoice-info__description",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
@@ -2620,7 +2604,8 @@ var InvoiceForm = function InvoiceForm() {
       })]
     })]
   });
-};
+}; // Start with the current date
+
 
 var DatePicker = function DatePicker() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("Jan"),
@@ -2729,6 +2714,8 @@ var DatePicker = function DatePicker() {
   function showBoxDates() {
     var displayDate = document.querySelector(".date-picker__display-date");
     var boxDates = document.querySelector(".date-picker__box-dates");
+    var boxOptions = document.querySelector(".select-terms__options-box");
+    boxOptions.style.display = "none";
     boxDates.style.display = "block";
     displayDate.style.borderColor = "rgb(145, 117, 255)";
   }
@@ -2764,6 +2751,95 @@ var DatePicker = function DatePicker() {
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
         className: "days"
+      })]
+    })]
+  });
+};
+
+var SelectTerm = function SelectTerm() {
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(30),
+      _useState8 = _slicedToArray(_useState7, 2),
+      currentTerm = _useState8[0],
+      setCurrentTerm = _useState8[1];
+
+  var body = document.querySelector("body");
+
+  function formatDispayTermText(currentTerm) {
+    if (currentTerm == 1) {
+      return "Net 1 Day";
+    } else {
+      return "Net ".concat(currentTerm, " Days");
+    }
+  }
+
+  function handleSelectOption(value) {
+    setCurrentTerm(value);
+  }
+
+  function toggleBoxOptions(e) {
+    e.stopPropagation();
+    showOptions();
+  }
+
+  body.addEventListener("click", function (e) {
+    e.stopPropagation();
+    hideOptions();
+  });
+
+  function showOptions() {
+    var boxOptions = document.querySelector(".select-terms__options-box");
+    var boxDates = document.querySelector(".date-picker__box-dates");
+    boxOptions.style.display = "block";
+    boxDates.style.display = "none";
+  }
+
+  function hideOptions() {
+    var boxOptions = document.querySelector(".select-terms__options-box");
+    boxOptions.style.display = "none";
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "select-terms",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      onClick: toggleBoxOptions,
+      className: "select-terms__term-display",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+        children: formatDispayTermText(currentTerm)
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Icons__WEBPACK_IMPORTED_MODULE_1__.IconArrowDown, {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "select-terms__options-box",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        onClick: function onClick() {
+          return handleSelectOption(1);
+        },
+        className: "option-container",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+          children: "Net 1 Day"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        onClick: function onClick() {
+          return handleSelectOption(7);
+        },
+        className: "option-container",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+          children: "Net 7 Days"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        onClick: function onClick() {
+          return handleSelectOption(14);
+        },
+        className: "option-container",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+          children: "Net 14 Days"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        onClick: function onClick() {
+          return handleSelectOption(30);
+        },
+        className: "option-container",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+          children: "Net 30 Days"
+        })
       })]
     })]
   });
