@@ -68,6 +68,16 @@
 }
 
 
+.btn-add-new-item {
+  width: 100%;
+  padding: 17px 0;
+  @include heading-4;
+  color: $text-gray-blue;
+  background-color: $bg-light-blue;
+  border: none;
+  border-radius: 24px;
+}
+
 /*
 -------------------------------------------
                 DARK MODE

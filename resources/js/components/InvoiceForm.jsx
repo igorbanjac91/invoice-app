@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { IconArrowDown, IconArrowLeft, IconArrowRight, IconCalendar } from "./Icons";
+import { IconArrowDown, IconArrowLeft, IconArrowRight, IconCalendar, IconDelete } from "./Icons";
 
 const InvoiceForm = () => {
 
@@ -58,12 +58,6 @@ const InvoiceForm = () => {
         </div>
         <div className="field invoice-info__term">
           <label htmlFor="term">Payment Terms</label>
-          {/* <select name="term" id="term">
-            <option value="1">Net 1 Day</option>
-            <option value="7">Net 7 Days</option>
-            <option value="14">Net 14 Days</option>
-            <option value="30">Net 30 Days</option>
-          </select> */}
           <SelectTerm />
         </div>
         <div className="field invoice-info__description">
@@ -73,46 +67,53 @@ const InvoiceForm = () => {
       </fieldset>
       <fieldset className="items">
         <legend>Item List</legend>
-        <div className="items-filed__item">
-          <div className="field">
+        <div className="item">
+          <div className="field item__name-field">
             <label htmlFor="item-name">Item Name</label>
             <input type="text" name="item-name" />
           </div>
-          <div className="field">
+          <div className="field item__quantity-field">
             <label htmlFor="item-quantity">Qty.</label>
             <input type="number" name="item-quantity" />
           </div>
-          <div className="field">
+          <div className="field item__price-field">
             <label htmlFor="item-price">Price</label>
             <input type="number" name="item-price" />
           </div>
-          <div className="item-total-field">
-            <div className="item-total">
-              <span>Total</span>
+          <div className="item__total-field">
+            <h4>Total</h4>
+            <div>
               <span>156.00</span>
+              <button>
+                <IconDelete />
+              </button>
             </div>
-            <button>Delete</button>
           </div>
         </div>
-        <button>+ Add New Item</button>
+        <button className="btn-add-new-item">+ Add New Item</button>
       </fieldset>
       <div className="form-actions">
-        <button>Cancel</button>
-        <button>Save Changes</button>
+        <button>Discard</button>
+        <button>Save as Draft </button>
+        <button>Save & Send</button>
       </div>
     </form>
   )
 }
 
+
+
+
 // Start with the current date
 
 const DatePicker = () => {
   
-  const [ month, setMonth ] = useState("Jan");
-  const [ year, setYear ] = useState(2021);
-  const [ day, setDay] = useState(1);
+  let date = new Date();
+  let monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov"];
+  const [ month, setMonth ] = useState(monthNames[date.getMonth()]);
+  const [ year, setYear ] = useState(date.getFullYear());
+  const [ day, setDay] = useState(date.getDate());
   let boxDates = document.querySelector(".date-picker__box-dates");
-  let displayDate = document.querySelector(".date-picker__display-date");
   let body = document.querySelector("body");
 
   useEffect(() => {
@@ -243,6 +244,8 @@ const SelectTerm = () => {
 
   const [ currentTerm, setCurrentTerm ] = useState(30);
   let body = document.querySelector("body");
+  let displayTerm = document.querySelector(".select-terms__term-display");
+  let boxOptions = document.querySelector(".select-terms__options-box")
 
   function formatDispayTermText(currentTerm) {
     if (currentTerm == 1) {
@@ -258,7 +261,11 @@ const SelectTerm = () => {
 
   function toggleBoxOptions(e) {
     e.stopPropagation();
-    showOptions();
+    if (boxOptions.style.display == "block") {
+      hideOptions();
+    } else {
+      showOptions();
+    }
   }
 
   body.addEventListener("click", (e) => {
@@ -271,11 +278,13 @@ const SelectTerm = () => {
     let boxDates = document.querySelector(".date-picker__box-dates");
     boxOptions.style.display = "block";
     boxDates.style.display = "none";
+    displayTerm.style.borderColor = "rgb(145, 117, 255)";
   }
-
+  
   function hideOptions() {
     let boxOptions = document.querySelector(".select-terms__options-box")
     boxOptions.style.display = "none";
+    displayTerm.style.borderColor = "rgb(244, 228, 251)";
   }
 
   return (

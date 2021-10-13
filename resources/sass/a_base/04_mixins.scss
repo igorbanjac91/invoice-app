@@ -26,6 +26,13 @@
   letter-spacing: -0.25px;
 }
 
+@mixin sub-heading {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: -0.38px;
+}
+
 @mixin strong {
   font-size: 15px;
   font-weight: 700;

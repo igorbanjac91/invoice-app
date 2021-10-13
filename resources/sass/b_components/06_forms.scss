@@ -124,21 +124,74 @@
     }
   }
 
-  .invoice-info {
-    
-    &__date {
+  .invoice-info {    
+    margin-bottom: 66px;
+
+    &__description {
+      margin-bottom: 0;
+    }
+  }
+
+  .items {
+
+    legend {
+      @include sub-heading;
+      color: $text-dark-gray;
+    }
+
+    .item {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+
+      &__name-field {
+        flex: 0 1 100%;
+      }
+
+      &__quantity-field {
+        flex: 0 1 20%;
+        margin-right: 16px;
+        margin-bottom: 0;
+      }
       
-      input {
-        text-indent: 10px;
+      &__price-field {
+        flex: 0 1 30%;
+        margin-right: 16px;
+        margin-bottom: 0;
+      }
+      
+      &__total-field {
+        flex: 1 1 auto;
+        margin-bottom: 0;
+
+        h4 {
+          margin-bottom: 10px;
+          @include heading-4;
+          font-weight: 500;
+          color: $text-gray-blue;
+        }
+        
+        > div {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          height: 48px;
+          @include heading-4;
+          color: $text-blue-dark-mode;
+
+          button {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            margin: 0;
+          }
+        }        
       }
     }
-    
-    &__term {
-      
-    }
-    
-    &__description {
 
-    }
+  }
+
+  .form-acton {
+    
   }
 }

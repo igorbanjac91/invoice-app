@@ -2551,9 +2551,9 @@ var InvoiceForm = function InvoiceForm() {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("legend", {
         children: "Item List"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "items-filed__item",
+        className: "item",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "field",
+          className: "field item__name-field",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
             htmlFor: "item-name",
             children: "Item Name"
@@ -2562,7 +2562,7 @@ var InvoiceForm = function InvoiceForm() {
             name: "item-name"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "field",
+          className: "field item__quantity-field",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
             htmlFor: "item-quantity",
             children: "Qty."
@@ -2571,7 +2571,7 @@ var InvoiceForm = function InvoiceForm() {
             name: "item-quantity"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "field",
+          className: "field item__price-field",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
             htmlFor: "item-price",
             children: "Price"
@@ -2580,27 +2580,29 @@ var InvoiceForm = function InvoiceForm() {
             name: "item-price"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "item-total-field",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            className: "item-total",
+          className: "item__total-field",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h4", {
+            children: "Total"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-              children: "Total"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
               children: "156.00"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Icons__WEBPACK_IMPORTED_MODULE_1__.IconDelete, {})
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-            children: "Delete"
           })]
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        className: "btn-add-new-item",
         children: "+ Add New Item"
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       className: "form-actions",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-        children: "Cancel"
+        children: "Discard"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-        children: "Save Changes"
+        children: "Save as Draft "
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        children: "Save & Send"
       })]
     })]
   });
@@ -2608,23 +2610,25 @@ var InvoiceForm = function InvoiceForm() {
 
 
 var DatePicker = function DatePicker() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("Jan"),
+  var date = new Date();
+  var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov"];
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(monthNames[date.getMonth()]),
       _useState2 = _slicedToArray(_useState, 2),
       month = _useState2[0],
       setMonth = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(2021),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(date.getFullYear()),
       _useState4 = _slicedToArray(_useState3, 2),
       year = _useState4[0],
       setYear = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(date.getDate()),
       _useState6 = _slicedToArray(_useState5, 2),
       day = _useState6[0],
       setDay = _useState6[1];
 
   var boxDates = document.querySelector(".date-picker__box-dates");
-  var displayDate = document.querySelector(".date-picker__display-date");
   var body = document.querySelector("body");
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     setDayBox();
@@ -2763,6 +2767,8 @@ var SelectTerm = function SelectTerm() {
       setCurrentTerm = _useState8[1];
 
   var body = document.querySelector("body");
+  var displayTerm = document.querySelector(".select-terms__term-display");
+  var boxOptions = document.querySelector(".select-terms__options-box");
 
   function formatDispayTermText(currentTerm) {
     if (currentTerm == 1) {
@@ -2778,7 +2784,12 @@ var SelectTerm = function SelectTerm() {
 
   function toggleBoxOptions(e) {
     e.stopPropagation();
-    showOptions();
+
+    if (boxOptions.style.display == "block") {
+      hideOptions();
+    } else {
+      showOptions();
+    }
   }
 
   body.addEventListener("click", function (e) {
@@ -2791,11 +2802,13 @@ var SelectTerm = function SelectTerm() {
     var boxDates = document.querySelector(".date-picker__box-dates");
     boxOptions.style.display = "block";
     boxDates.style.display = "none";
+    displayTerm.style.borderColor = "rgb(145, 117, 255)";
   }
 
   function hideOptions() {
     var boxOptions = document.querySelector(".select-terms__options-box");
     boxOptions.style.display = "none";
+    displayTerm.style.borderColor = "rgb(244, 228, 251)";
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {

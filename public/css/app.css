@@ -250,6 +250,19 @@ body {
   background-color: #7b5cfa;
 }
 
+.btn-add-new-item {
+  width: 100%;
+  padding: 17px 0;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: #7f89c3;
+  background-color: #fbfbfe;
+  border: none;
+  border-radius: 24px;
+}
+
 /*
 -------------------------------------------
                 DARK MODE
@@ -375,8 +388,66 @@ body {
   flex: 0 1 100%;
   margin-bottom: 0;
 }
-.invoice-form .invoice-info__date input {
-  text-indent: 10px;
+.invoice-form .invoice-info {
+  margin-bottom: 66px;
+}
+.invoice-form .invoice-info__description {
+  margin-bottom: 0;
+}
+.invoice-form .items legend {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: -0.38px;
+  color: #767f98;
+}
+.invoice-form .items .item {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+.invoice-form .items .item__name-field {
+  flex: 0 1 100%;
+}
+.invoice-form .items .item__quantity-field {
+  flex: 0 1 20%;
+  margin-right: 16px;
+  margin-bottom: 0;
+}
+.invoice-form .items .item__price-field {
+  flex: 0 1 30%;
+  margin-right: 16px;
+  margin-bottom: 0;
+}
+.invoice-form .items .item__total-field {
+  flex: 1 1 auto;
+  margin-bottom: 0;
+}
+.invoice-form .items .item__total-field h4 {
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  font-weight: 500;
+  color: #7f89c3;
+}
+.invoice-form .items .item__total-field > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: #888eaf;
+}
+.invoice-form .items .item__total-field > div button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 .table-container {
   width: 100%;
@@ -525,6 +596,11 @@ body {
   color: #fff;
 }
 
+/*
+-------------------------------------------
+              STATUS TAG BOX
+-------------------------------------------
+*/
 [class*=invoice--status] {
   align-self: flex-end;
   box-sizing: border-box;
@@ -665,6 +741,7 @@ body {
   cursor: pointer;
   border: 1px solid #e0e4fb;
   border-radius: 4px;
+  -webkit-tap-highlight-color: transparent;
 }
 .select-terms__options-box {
   position: absolute;

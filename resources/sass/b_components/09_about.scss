@@ -1,3 +1,9 @@
+/*
+-------------------------------------------
+              STATUS TAG BOX
+-------------------------------------------
+*/
+
 [class*="invoice--status"] {
   align-self: flex-end;
   box-sizing: border-box;
@@ -152,6 +158,7 @@
     cursor: pointer;
     border: 1px solid $text-edit-dark-mode;
     border-radius: 4px;
+    -webkit-tap-highlight-color: transparent;
   }
   
   &__options-box {
@@ -165,7 +172,7 @@
     border-radius: 8px;
     box-shadow: 0 10px 20px 0px $blue-darken-shadow;
     transform: translateX(-50%);
-
+    
     .option-container {
       box-sizing: border-box;
       width: 100%;
